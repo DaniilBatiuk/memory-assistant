@@ -19,6 +19,11 @@
       }
     ],
     "paths": {
+      "@/components": ["./src/shared/components"],
+      "@/actions": ["./src/shared/actions"],
+      "@/constants": ["./src/shared/constants"],
+      "@/hooks": ["./src/shared/hooks"],
+      "@/helpers": ["./src/shared/helpers"],
       "@/*": ["./src/*"]
     }
   },

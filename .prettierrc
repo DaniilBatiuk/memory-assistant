@@ -10,17 +10,12 @@
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
     "@/components/(.*)$",
-    "@/styles/(.*)$",
-    "@/utils/constants",
-    "@/utils/hooks/(.*)$",
-    "@/utils/lib/@types/(.*)$",
-    "@/utils/lib/actions/(.*)$",
-    "@/utils/lib/helpers/(.*)$",
-    "@/utils/lib/validators/(.*)$",
-    "@/utils/lib/services/(.*)$",
+    "@/actions/(.*)$",
+    "@/constants/(.*)$",
+    "@/hooks/(.*)$",
+    "@/helpers/(.*)$",
     "^../(.*)",
-    "^./(.*)",
-    "(.scss)$"
+    "^./(.*)"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
