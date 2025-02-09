@@ -24,6 +24,7 @@
       "@/constants": ["./src/shared/constants"],
       "@/hooks": ["./src/shared/hooks"],
       "@/helpers": ["./src/shared/helpers"],
+      "@/i18n": ["./src/shared/i18n"],
       "@/*": ["./src/*"]
     }
   },

@@ -1,10 +1,67 @@
 import type { Config } from 'tailwindcss'
+import { PluginAPI } from 'tailwindcss/types/config'
+
+const plugin = require('tailwindcss/plugin')
+
+const minWidth = 375
+const maxWidth = 1440
+const baseFontSize = 16
+
+const properties = [
+  'font-size',
+  'line-height',
+  'letter-spacing',
+  'word-spacing',
+  'margin',
+  'margin-top',
+  'margin-right',
+  'margin-bottom',
+  'margin-left',
+  'padding',
+  'padding-top',
+  'padding-right',
+  'padding-bottom',
+  'padding-left',
+  'gap',
+  'row-gap',
+  'column-gap',
+  'width',
+  'min-width',
+  'max-width',
+  'height',
+  'min-height',
+  'max-height',
+  'border-width',
+  'border-radius',
+  'box-shadow',
+  'outline-width',
+  'outline-offset',
+  'flex-basis',
+  'flex-grow',
+  'flex-shrink',
+  'grid-auto-columns',
+  'grid-auto-rows',
+  'grid-template-columns',
+  'grid-template-rows',
+  'top',
+  'right',
+  'bottom',
+  'left',
+  'inset',
+]
 
 export default {
   darkMode: ['class'],
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
+    container: {
+      padding: '15px',
+      center: true,
+    },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -54,5 +111,37 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    plugin(function ({ matchUtilities }: PluginAPI) {
+      matchUtilities(
+        Object.fromEntries(
+          properties.map(prop => [
+            `adaptive-${prop}`,
+            (value: string) => {
+              const [minSize, maxSize] = value.split(',').map(size => +size / baseFontSize)
+              if (isNaN(minSize) || isNaN(maxSize)) return null
+
+              const minWidthRem = minWidth / baseFontSize
+              const maxWidthRem = maxWidth / baseFontSize
+
+              const slope = (maxSize - minSize) / (maxWidthRem - minWidthRem)
+              const yIntercept = minSize - slope * minWidthRem
+
+              return {
+                [prop]: `clamp(${minSize}rem, calc(${slope * 100}vw + ${yIntercept}rem), ${maxSize}rem)`,
+              }
+            },
+          ]),
+        ),
+        {
+          values: {
+            '20-40': '20,40',
+            '10-15': '10,15',
+            '15-20': '15,20',
+          },
+        },
+      )
+    }),
+  ],
 } satisfies Config
