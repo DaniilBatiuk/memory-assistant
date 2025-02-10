@@ -10,11 +10,8 @@ import { usePathname, useRouter } from '@/i18n'
 import { Button } from './button'
 
 export function LangToggle() {
-  //   const { lang, setLang } = useLang()
   const locale = useLocale()
   const router = useRouter()
-
-  console.log('locale', locale)
 
   const pathname = usePathname()
   const params = useParams()
@@ -31,7 +28,6 @@ export function LangToggle() {
     <Button variant='ghost' size='icon' className='[&_svg]:size-[1.1rem]' onClick={onSelectLang}>
       {ICONS.langEn({ className: locale === 'en' ? 'dark:text-white' : 'hidden' })}
       {ICONS.langUa({ className: locale === 'ua' ? 'dark:block dark:text-white' : 'hidden' })}
-      <span className='sr-only'>Toggle lang</span>
     </Button>
   )
 }

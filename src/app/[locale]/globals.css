@@ -72,6 +72,14 @@
   .container {
     @apply max-w-[1440px] font-light;
   }
+
+  .full-width {
+    width: calc(100% - 30px);
+  }
+
+  .full-height {
+    height: calc(100svh - 65px);
+  }
 }
 
 [data-theme='dark'] {

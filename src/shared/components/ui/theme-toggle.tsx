@@ -16,7 +16,6 @@ export function ThemeToggle() {
     >
       <Sun className='dark:hidden' />
       <Moon className='hidden dark:block' />
-      <span className='sr-only'>Toggle theme</span>
     </Button>
   )
 }
