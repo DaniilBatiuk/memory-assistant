@@ -63,7 +63,6 @@
     @apply border-border;
   }
   body {
-    font-family: 'Inter', sans-serif;
     @apply bg-background text-foreground;
   }
 }
@@ -72,7 +71,9 @@
   .container {
     @apply max-w-[1440px] font-light;
   }
+}
 
+@layer utilities {
   .full-width {
     width: calc(100% - 30px);
   }
@@ -80,9 +81,4 @@
   .full-height {
     height: calc(100svh - 65px);
   }
-}
-
-[data-theme='dark'] {
-  --background: black;
-  --foreground: white;
 }

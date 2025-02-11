@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { Button } from '@/components'
+import { Button } from '@/components/ui'
 
 import { MenuOpen } from '../menu-open/menu-open'
 
@@ -29,9 +29,9 @@ export const Burger: React.FC = () => {
             active: burgerActive,
           })}
         >
-          <span className='absolute left-0 top-0 h-[2px] w-full bg-black transition-transform group-[.active]:translate-y-[6px] group-[.active]:rotate-45 dark:bg-white'></span>
-          <span className='absolute left-0 top-[6px] h-[2px] w-full bg-black transition-opacity group-[.active]:opacity-0 dark:bg-white'></span>
-          <span className='absolute bottom-0 left-0 h-[2px] w-full bg-black transition-transform group-[.active]:-translate-y-[6px] group-[.active]:-rotate-45 dark:bg-white'></span>
+          <span className='absolute left-0 top-0 h-[2px] w-full bg-foreground transition-transform group-[.active]:translate-y-[6px] group-[.active]:rotate-45'></span>
+          <span className='absolute left-0 top-[6px] h-[2px] w-full bg-foreground transition-opacity group-[.active]:opacity-0'></span>
+          <span className='absolute bottom-0 left-0 h-[2px] w-full bg-foreground transition-transform group-[.active]:-translate-y-[6px] group-[.active]:-rotate-45'></span>
         </div>
       </Button>
       <MenuOpen burgerActive={burgerActive} />

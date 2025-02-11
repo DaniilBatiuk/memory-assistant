@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
-import { Header, MainWrapper } from '@/components'
+import { Header, MainWrapper } from '@/components/shared'
 
 import { Locale, routing } from '@/i18n'
 
