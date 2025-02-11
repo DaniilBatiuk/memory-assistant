@@ -1,0 +1,14 @@
+{
+  "Header": {
+    "about": "About us",
+    "translation": "Translation",
+    "context": "Context",
+    "demoDictionary": "Demo dictionary",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  }
+}
