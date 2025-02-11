@@ -22,6 +22,7 @@ const properties = [
   'padding-right',
   'padding-bottom',
   'padding-left',
+  'padding-inline',
   'gap',
   'row-gap',
   'column-gap',
@@ -61,6 +62,10 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
+      },
+      screens: {
+        sm: '375px',
+        xl: '1440px',
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -136,9 +141,21 @@ export default {
         ),
         {
           values: {
+            '50-80': '50,80',
+            '40-69': '40,69',
+            '20-60': '20,60',
+            '48-54': '48,54',
+            '30-40': '30,40',
+            '25-40': '25,40',
             '20-40': '20,40',
-            '10-15': '10,15',
+            '25-30': '25,30',
+            '20-25': '20,25',
+            '20-24': '20,24',
+            '10-24': '10,24',
+            '5-24': '5,24',
             '15-20': '15,20',
+            '16-18': '16,18',
+            '10-15': '10,15',
           },
         },
       )

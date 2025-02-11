@@ -49,10 +49,7 @@ export const MenuOpen: React.FC<BurgerProps> = ({ burgerActive }: BurgerProps) =
           </p>
         </li>
       </ul>
-      <Button
-        size='lg'
-        className='full-width absolute bottom-[15px] mx-[15px] text-base min-[551px]:hidden'
-      >
+      <Button size='md' className='full-width absolute bottom-[15px] mx-[15px] min-[551px]:hidden'>
         {t('signIn')}
       </Button>
     </nav>

@@ -3,7 +3,7 @@ import { Navbar } from './components/navbar/navbar'
 
 export const Header: React.FC = () => {
   return (
-    <header className='flex h-[65px] items-center border-b-[1px] backdrop-blur-2xl'>
+    <header className='sticky top-0 flex h-[65px] items-center border-b-[1px] bg-background'>
       <div className='container flex items-center justify-between'>
         <Navbar />
         <NavbarControls />
