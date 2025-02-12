@@ -62,14 +62,19 @@
   * {
     @apply border-border;
   }
+  html {
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-light text-foreground;
   }
 }
 
 @layer components {
   .container {
-    @apply max-w-[1440px] font-light;
+    @apply max-w-[1440px];
   }
 }
 
@@ -80,5 +85,9 @@
 
   .full-height {
     height: calc(100svh - 65px);
+  }
+
+  .half-width {
+    width: calc(50% - 30px);
   }
 }

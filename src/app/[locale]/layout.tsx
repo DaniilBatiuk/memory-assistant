@@ -36,12 +36,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${interSans.variable} antialiased`}>
+      <body className={`${interSans.variable} relative antialiased`}>
         <MainWrapper>
-          <main>
-            <Header />
-            {children}
-          </main>
+          <Header />
+          <main>{children}</main>
         </MainWrapper>
       </body>
     </html>

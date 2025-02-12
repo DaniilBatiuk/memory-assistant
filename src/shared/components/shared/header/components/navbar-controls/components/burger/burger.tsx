@@ -13,8 +13,7 @@ export const Burger: React.FC = () => {
 
   const clickBurger = () => {
     setBurgerActive(prev => !prev)
-    const body = document.querySelector('body')
-    body?.classList.toggle('overflow-hidden')
+    document.body.classList.toggle('overflow-hidden')
   }
   return (
     <>
