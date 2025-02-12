@@ -68,13 +68,16 @@
     scrollbar-width: thin;
   }
   body {
-    @apply bg-background font-light text-foreground;
+    @apply bg-background font-normal text-foreground;
   }
 }
 
 @layer components {
   .container {
     @apply max-w-[1440px];
+  }
+  .container-small {
+    @apply mx-auto max-w-[1100px] px-[15px];
   }
 }
 
