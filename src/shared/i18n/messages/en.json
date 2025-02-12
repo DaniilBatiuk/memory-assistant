@@ -62,5 +62,55 @@
         "link": "+38 (068) 905-06-93"
       }
     }
+  },
+  "AboutPage": {
+    "title": "Memory Assistant",
+    "subtitle": "Memory Assistant is a unique tool for learning foreign languages that helps not only with translating words but also with effectively memorizing them. We have created a platform that combines a translator, a word meaning search engine, a personal dictionary tool, and a testing system designed for long-term vocabulary retention.",
+    "why": {
+      "title": "Why Memory Assistant?",
+      "subtitle": "When learning a language, one of the biggest challenges is remembering new words and not forgetting them over time. Memory Assistant solves this problem with a comprehensive approach:",
+      "reason1": {
+        "title": "Advanced Word Meaning Search",
+        "subtitle": "Traditional dictionaries provide one or two meanings for a word, but many words have dozens of translations depending on the context. Memory Assistant gives you all possible translations and example sentences, helping you understand the nuances of word usage."
+      },
+      "reason2": {
+        "title": "Text Translation",
+        "subtitle": "Our platform allows you to quickly translate any text, not just providing a word-for-word translation but also analyzing the meaning to avoid literal errors. You can translate articles, dialogues, instructions, and more while considering context."
+      },
+      "reason3": {
+        "title": "Create Personal Dictionaries",
+        "subtitle": "Save important words in personalized lists. This is especially useful if you are studying by topic, preparing for exams, or want to memorize words from a specific text. Your dictionary is your personal knowledge base, accessible anytime."
+      },
+      "reason4": {
+        "title": "Effective Memory-Boosting Tests",
+        "subtitle": "Simply translating and memorizing words is not enough to master a language. That’s why we developed an interactive testing system that helps reinforce new vocabulary."
+      }
+    },
+    "who": {
+      "title": "Who Is Memory Assistant For?",
+      "subtitle": "When learning a language, one of the biggest challenges is remembering new words and not forgetting them over time. Memory Assistant solves this problem with a comprehensive approach:",
+      "forWho": {
+        "studentsAndLearners": {
+          "who": "Students and learners",
+          "how": " – prepare for exams and expand your vocabulary."
+        },
+        "travelers": {
+          "who": "Travelers",
+          "how": " – memorize essential words and phrases before your trip."
+        },
+        "professionalsWorking": {
+          "who": "Professionals working with foreign languages",
+          "how": " – translators, copywriters, IT specialists, and more."
+        },
+        "anyoneWhoWants": {
+          "who": "Anyone who wants to learn a language efficiently",
+          "how": " – whether it's English, Russian, or another language."
+        }
+      }
+    },
+    "conclusion": {
+      "title": "Conclusion",
+      "subtitle": "We believe that language learning should be convenient, engaging, and effective. Memory Assistant is here to support you in this journey. Use our tools, take tests, create your own dictionaries, and make language learning a part of your daily life!"
+    }
   }
 }
