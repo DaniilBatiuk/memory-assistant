@@ -86,4 +86,8 @@
   .full-height {
     height: calc(100svh - 65px);
   }
+
+  .half-width {
+    width: calc(50% - 30px);
+  }
 }

@@ -25,6 +25,34 @@
         "title": "Examine sentence examples to gain a deeper understanding of words in context and usage",
         "subtitle": "Contextual learning enhances your ability to remember and apply new words"
       }
+    },
+    "featureDictionary": {
+      "title": "Create Your Own Personalized Dictionary for Effortless Language Learning",
+      "subtitle": "With our personalized dictionary feature, you can easily add new words that you encounter. Build custom dictionaries tailored to your learning style and track your progress.",
+      "list": {
+        "advantage1": "Easily add words you want to learn.",
+        "advantage2": "Create custom dictionaries for focused learning.",
+        "advantage3": "Track your progress with personalized tests."
+      }
+    },
+    "getInTouch": {
+      "title": "Get in Touch",
+      "subtitle": "We’re here to assist you with any inquiries",
+      "email": {
+        "title": "Email",
+        "subtitle": "Reach us anytime at the email provided below.",
+        "link": "memoryassistant@gmail.com"
+      },
+      "liveChat": {
+        "title": "Live chat",
+        "subtitle": "Chat with our support team for instant help in telegram.",
+        "link": "Start new chat in telegram"
+      },
+      "phone": {
+        "title": "Phone",
+        "subtitle": "Call us for immediate assistance anytime.",
+        "link": "+38 (068) 905-06-93"
+      }
     }
   }
 }
