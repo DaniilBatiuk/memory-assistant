@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
-import { Header, MainWrapper } from '@/components/shared'
+import { Footer, Header, MainWrapper } from '@/components/shared'
 
 import { Locale, routing } from '@/i18n'
 
@@ -39,7 +39,8 @@ export default async function LocaleLayout({
       <body className={`${interSans.variable} relative antialiased`}>
         <MainWrapper>
           <Header />
-          <main>{children}</main>
+          <main className='flex-auto'>{children}</main>
+          <Footer />
         </MainWrapper>
       </body>
     </html>

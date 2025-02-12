@@ -7,6 +7,14 @@
     "signIn": "Sign In",
     "signUp": "Sign Up"
   },
+  "Footer": {
+    "about": "About us",
+    "translation": "Translation",
+    "context": "Context",
+    "demoDictionary": "Demo dictionary",
+    "subscribe": "Subscribe",
+    "privacyPolicy": "© 2025 Memory Assistant. All rights reserved."
+  },
   "HomePage": {
     "title": "Unlock Your Language Learning Potential Today",
     "subtitle": "Memory Assistant is your ultimate tool for mastering foreign words effortlessly. With our innovative features, you can translate, create personalized dictionaries, and test your knowledge to enhance your learning experience.",

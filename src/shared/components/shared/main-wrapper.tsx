@@ -6,7 +6,9 @@ export const MainWrapper = async ({ children }: { children: React.ReactNode }) =
   const messages = await getMessages()
   return (
     <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
-      <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+      <NextIntlClientProvider messages={messages}>
+        <div className='flex min-h-screen flex-col'> {children}</div>
+      </NextIntlClientProvider>
     </ThemeProvider>
   )
 }
