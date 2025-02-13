@@ -7,7 +7,6 @@ export const LANGUAGES: string[] = [
   'Italian',
   'Japanese',
   'Polish',
-  'Portuguese',
   'Romanian',
   'Russian',
   'Turkish',

@@ -12,10 +12,12 @@ import {
 interface SelectLanguageProps {
   value: string
   onChangeValue: (value: string) => void
+  excludeValue: string
 }
 
 export const SelectLanguage: React.FC<SelectLanguageProps> = ({
   onChangeValue,
+  excludeValue,
   value,
 }: SelectLanguageProps) => {
   return (
@@ -25,7 +27,7 @@ export const SelectLanguage: React.FC<SelectLanguageProps> = ({
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          {LANGUAGES.map(language => (
+          {LANGUAGES.filter(lang => lang !== excludeValue).map(language => (
             <SelectItem key={language} value={language}>
               {language}
             </SelectItem>
