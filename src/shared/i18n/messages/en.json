@@ -112,5 +112,10 @@
       "title": "Conclusion",
       "subtitle": "We believe that language learning should be convenient, engaging, and effective. Memory Assistant is here to support you in this journey. Use our tools, take tests, create your own dictionaries, and make language learning a part of your daily life!"
     }
+  },
+  "TranslationDialog": {
+    "title": "Translation",
+    "from": "Type to translate",
+    "to": "Translation"
   }
 }

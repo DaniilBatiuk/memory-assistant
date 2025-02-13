@@ -66,6 +66,11 @@
     scrollbar-gutter: stable;
     scroll-behavior: smooth;
     scrollbar-width: thin;
+
+    & > body[data-scroll-locked] {
+      overflow: auto !important;
+      margin-right: 0px !important;
+    }
   }
   body {
     @apply bg-background font-normal text-foreground;
@@ -92,5 +97,8 @@
 
   .half-width {
     width: calc(50% - 30px);
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
   }
 }

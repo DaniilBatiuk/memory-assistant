@@ -6,13 +6,16 @@ import { LINKS } from '@/constants'
 
 import { Link } from '@/i18n'
 
+import { DialogTranslate } from '../../../dialog-translate/dialog-translate'
+
 import { cn } from '@/shared/lib/css'
 
 interface BurgerProps {
   burgerActive: boolean
+  closeBurgerMenu: () => void
 }
 
-export const MenuOpen: React.FC<BurgerProps> = ({ burgerActive }: BurgerProps) => {
+export const MenuOpen: React.FC<BurgerProps> = ({ burgerActive, closeBurgerMenu }: BurgerProps) => {
   const t = useTranslations('Header')
   return (
     <nav
@@ -34,9 +37,14 @@ export const MenuOpen: React.FC<BurgerProps> = ({ burgerActive }: BurgerProps) =
           </Link>
         </li>
         <li className='flex w-full'>
-          <p className='w-full py-3 text-center text-xl font-medium text-foreground/60 hover:cursor-pointer hover:bg-foreground/5 hover:text-foreground'>
-            {t('translation')}
-          </p>
+          <DialogTranslate>
+            <button
+              onClick={closeBurgerMenu}
+              className='w-full py-3 text-center text-xl font-medium text-foreground/60 hover:cursor-pointer hover:bg-foreground/5 hover:text-foreground'
+            >
+              {t('translation')}
+            </button>
+          </DialogTranslate>
         </li>
         <li className='flex w-full'>
           <p className='w-full py-3 text-center text-xl font-medium text-foreground/60 hover:cursor-pointer hover:bg-foreground/5 hover:text-foreground'>

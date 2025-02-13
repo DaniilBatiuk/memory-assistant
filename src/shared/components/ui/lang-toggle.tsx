@@ -25,7 +25,13 @@ export function LangToggle() {
     )
   }
   return (
-    <Button variant='ghost' size='icon' className='[&_svg]:size-[1.1rem]' onClick={onSelectLang}>
+    <Button
+      variant='ghost'
+      size='icon'
+      className='[&_svg]:size-[1.1rem]'
+      onClick={onSelectLang}
+      aria-label='lang'
+    >
       {ICONS.langEn({ className: locale === 'en' ? 'text-foreground' : 'hidden' })}
       {ICONS.langUa({ className: locale === 'ua' ? 'dark:block text-foreground' : 'hidden' })}
     </Button>

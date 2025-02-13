@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
-import { Footer, Header, MainWrapper } from '@/components/shared'
+import { Footer, Header, MainWrapper, QueryWrapper } from '@/components/shared'
 
 import { Locale, routing } from '@/i18n'
 
-import './globals.css'
+import './globals.scss'
 
 const interSans = Inter({
   variable: '--font-inter-sans',
@@ -38,9 +38,11 @@ export default async function LocaleLayout({
     <html lang={locale} suppressHydrationWarning>
       <body className={`${interSans.variable} relative antialiased`}>
         <MainWrapper>
-          <Header />
-          <main className='flex-auto'>{children}</main>
-          <Footer />
+          <QueryWrapper>
+            <Header />
+            <main className='flex-auto'>{children}</main>
+            <Footer />
+          </QueryWrapper>
         </MainWrapper>
       </body>
     </html>
