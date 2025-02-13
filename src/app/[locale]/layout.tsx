@@ -6,7 +6,7 @@ import { Footer, Header, MainWrapper } from '@/components/shared'
 
 import { Locale, routing } from '@/i18n'
 
-import './globals.css'
+import './globals.scss'
 
 const interSans = Inter({
   variable: '--font-inter-sans',

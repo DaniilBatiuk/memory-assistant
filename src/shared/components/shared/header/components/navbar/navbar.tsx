@@ -4,6 +4,8 @@ import { ICONS, LINKS } from '@/constants'
 
 import { Link } from '@/i18n'
 
+import { DialogTranslate } from '../dialog-translate/dialog-translate'
+
 export const Navbar: React.FC = async () => {
   const t = await getTranslations('Header')
 
@@ -21,9 +23,11 @@ export const Navbar: React.FC = async () => {
             </Link>
           </li>
           <li>
-            <p className='text-base text-foreground/55 hover:cursor-pointer hover:text-foreground'>
-              {t('translation')}
-            </p>
+            <DialogTranslate>
+              <button className='text-base text-foreground/55 hover:cursor-pointer hover:text-foreground'>
+                {t('translation')}
+              </button>
+            </DialogTranslate>
           </li>
           <li>
             <p className='text-base text-foreground/55 hover:cursor-pointer hover:text-foreground'>

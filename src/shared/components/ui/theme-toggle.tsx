@@ -13,6 +13,7 @@ export function ThemeToggle() {
       variant='ghost'
       size='icon'
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      aria-label='theme'
     >
       <Sun className='dark:hidden' />
       <Moon className='hidden dark:block' />

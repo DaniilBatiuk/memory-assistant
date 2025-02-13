@@ -33,7 +33,7 @@ export const Burger: React.FC = () => {
           <span className='absolute bottom-0 left-0 h-[2px] w-full bg-foreground transition-transform group-[.active]:-translate-y-[6px] group-[.active]:-rotate-45'></span>
         </div>
       </Button>
-      <MenuOpen burgerActive={burgerActive} />
+      <MenuOpen burgerActive={burgerActive} closeBurgerMenu={clickBurger} />
     </>
   )
 }
