@@ -12,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  SelectLanguage,
   Textarea,
 } from '@/components/ui'
 
@@ -19,11 +20,10 @@ import { ICONS, LANGUAGES } from '@/constants'
 
 import { useDebounceValue } from '@/hooks'
 
-import { SelectLanguage } from '@/shared/components/ui/select-language'
-import { cn } from '@/shared/lib/css'
 import { translationApi } from '@/shared/modules/translation-api'
 
-const randomUseragent = require('random-useragent')
+import { cn } from '@/shared/lib/css'
+
 interface DialogTranslateProps {
   children: React.ReactNode
 }
@@ -33,24 +33,28 @@ export const DialogTranslate: React.FC<DialogTranslateProps> = ({
 }: DialogTranslateProps) => {
   const t = useTranslations('TranslationDialog')
 
-  const [textToTranslate, setTextToTranslate] = useState('')
-  const [langFrom, setLangFrom] = useState(LANGUAGES[2])
-  const [langTo, setLangTo] = useState(LANGUAGES[9])
+  const [search, setSearch] = useState('')
+  const [from, setFrom] = useState(LANGUAGES[1])
+  const [to, setTo] = useState(LANGUAGES[6])
 
   const switchLanguages = async () => {
-    setLangFrom(langTo)
-    setLangTo(langFrom)
-
-    setTextToTranslate(translation && translation.data ? translation.data.translations[0] : '')
+    setFrom(to)
+    setTo(from)
+    setSearch(translation && translation.success ? translation.data.translations[0] : '')
   }
 
-  const debouncedTextToTranslate = useDebounceValue(textToTranslate, 500)
+  const debouncedSearch = useDebounceValue(search, 500)
 
   const { data: translation, isFetching } = useQuery({
-    queryKey: ['translate', langFrom, langTo, debouncedTextToTranslate],
-    queryFn: () => translationApi.getTranslation({ textToTranslate, langFrom, langTo }),
+    queryKey: ['translate', from, to, debouncedSearch],
+    queryFn: () =>
+      translationApi.getTranslation({
+        search,
+        from,
+        to,
+      }),
     placeholderData: keepPreviousData,
-    enabled: Boolean(textToTranslate),
+    enabled: Boolean(search),
   })
 
   return (
@@ -64,9 +68,9 @@ export const DialogTranslate: React.FC<DialogTranslateProps> = ({
         <div>
           <div className='mb-3 flex justify-center space-x-1 [&_button]:border-[0px] [&_button]:!ring-0'>
             <SelectLanguage
-              value={langFrom}
-              onChangeValue={value => setLangFrom(value)}
-              excludeValue={langTo}
+              value={from}
+              onChangeValue={value => setFrom(value)}
+              excludeValue={to}
             />
             <Button
               variant='ghost'
@@ -76,26 +80,22 @@ export const DialogTranslate: React.FC<DialogTranslateProps> = ({
             >
               {ICONS.switch()}
             </Button>
-            <SelectLanguage
-              value={langTo}
-              onChangeValue={value => setLangTo(value)}
-              excludeValue={langFrom}
-            />
+            <SelectLanguage value={to} onChangeValue={value => setTo(value)} excludeValue={from} />
           </div>
           <div className='flex gap-4 max-[700px]:flex-col'>
             <Textarea
               placeholder={t('from')}
-              value={textToTranslate}
+              value={search}
               className='scrollbar-thin h-[300px] resize-none max-[700px]:h-[200px]'
-              onChange={e => setTextToTranslate(e.target.value)}
+              onChange={e => setSearch(e.target.value)}
             />
             <Textarea
               placeholder={t('to')}
               className={cn('scrollbar-thin h-[300px] resize-none !ring-0 max-[700px]:h-[200px]', {
-                'text-foreground/40': isFetching || textToTranslate !== debouncedTextToTranslate,
+                'text-foreground/40': isFetching || search !== debouncedSearch,
               })}
               readOnly
-              value={translation && translation.data ? translation.data.translations[0] : ''}
+              value={translation && translation.success ? translation.data.translations[0] : ''}
             />
           </div>
         </div>

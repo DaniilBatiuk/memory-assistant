@@ -117,5 +117,17 @@
     "title": "Translation",
     "from": "Type to translate",
     "to": "Translation"
+  },
+  "Context": {
+    "title": "Translate & Learn",
+    "subtitle": "Millions of words and expressions in context",
+    "placeholder": "Search for a word, an expression",
+    "translations": "Translations",
+    "examples": "Examples",
+    "notFound": "not found in Context.",
+    "error": {
+      "title": "Something went wrong.",
+      "subtitle": "There was a problem with the request. Please try again."
+    }
   }
 }

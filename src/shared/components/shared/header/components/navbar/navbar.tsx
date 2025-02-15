@@ -30,9 +30,12 @@ export const Navbar: React.FC = async () => {
             </DialogTranslate>
           </li>
           <li>
-            <p className='text-base text-foreground/55 hover:cursor-pointer hover:text-foreground'>
+            <Link
+              href={LINKS.Context}
+              className='text-base text-foreground/55 hover:cursor-pointer hover:text-foreground'
+            >
               {t('context')}
-            </p>
+            </Link>
           </li>
           <li>
             <p className='text-base text-foreground/55 hover:cursor-pointer hover:text-foreground'>

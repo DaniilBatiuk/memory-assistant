@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { useDebounceCallback } from '../useDebounceCallback/useDebounceCallback'
+import { useDebounceCallback } from '../use-debounce-callback/use-debounce-callback'
 
 /**
  * @name useDebounceValue

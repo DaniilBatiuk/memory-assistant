@@ -4,11 +4,11 @@ import { Button } from '@/components/ui'
 
 import { LINKS } from '@/constants'
 
+import { cn } from '@/shared/lib/css'
+
 import { Link } from '@/i18n'
 
 import { DialogTranslate } from '../../../dialog-translate/dialog-translate'
-
-import { cn } from '@/shared/lib/css'
 
 interface BurgerProps {
   burgerActive: boolean
@@ -20,7 +20,7 @@ export const MenuOpen: React.FC<BurgerProps> = ({ burgerActive, closeBurgerMenu 
   return (
     <nav
       className={cn(
-        'full-height fixed left-[-100%] top-0 mt-[65px] w-full flex-col justify-between bg-background pt-[15px] transition-all',
+        'full-height fixed left-[-100%] top-0 z-[10000] mt-[65px] w-full flex-col justify-between bg-background pt-[15px] transition-all',
         {
           'left-0 flex opacity-100': burgerActive,
           'pointer-events-none opacity-0': !burgerActive,

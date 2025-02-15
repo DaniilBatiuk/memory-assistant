@@ -88,12 +88,13 @@ export default {
       accent: {
         DEFAULT: 'hsl(var(--accent))',
         foreground: 'hsl(var(--accent-foreground))',
+        text: 'hsl(var(--accent-text))',
       },
       destructive: {
         DEFAULT: 'hsl(var(--destructive))',
         foreground: 'hsl(var(--destructive-foreground))',
       },
-      border: 'hsl(var(--border))',
+      border: { DEFAULT: 'hsl(var(--border))', accent: 'hsl(var(--border-accent))' },
       input: 'hsl(var(--input))',
       ring: 'hsl(var(--ring))',
       chart: {
@@ -118,6 +119,9 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
     },
+  },
+  future: {
+    hoverOnlyWhenSupported: true,
   },
   plugins: [
     require('tailwindcss-animate'),

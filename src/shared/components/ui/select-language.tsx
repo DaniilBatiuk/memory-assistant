@@ -13,15 +13,23 @@ interface SelectLanguageProps {
   value: string
   onChangeValue: (value: string) => void
   excludeValue: string
+  name?: string
 }
 
 export const SelectLanguage: React.FC<SelectLanguageProps> = ({
   onChangeValue,
   excludeValue,
   value,
+  name,
 }: SelectLanguageProps) => {
   return (
-    <Select onValueChange={value => onChangeValue(value)} value={value}>
+    <Select
+      onValueChange={value => {
+        if (value) onChangeValue(value)
+      }}
+      value={value}
+      name={name}
+    >
       <SelectTrigger className='w-[140px]'>
         <SelectValue placeholder='Select a language' />
       </SelectTrigger>
