@@ -24,20 +24,21 @@ export const NotFoundTranslation: React.FC<NotFoundTranslationProps> = ({
   const { toast } = useToast()
 
   useEffect(() => {
-    if ((translations && !translations.success) || (context && !context.success)) {
-      toast({
-        variant: 'destructive',
-        title: errorTitle,
-        description: errorSubtitle,
-      })
+    const translationsError =
+      translations && !translations.success && translations.error === 'Something went wrong'
+    const contextError = context && !context.success && context.error === 'Something went wrong'
+    if (translationsError || contextError) {
+      setTimeout(() => {
+        toast({
+          variant: 'destructive',
+          title: errorTitle,
+          description: errorSubtitle,
+        })
+      }, 0)
     }
   }, [translations, context, toast])
 
-  if (
-    (!translations && !context) ||
-    (translations && !translations.success) ||
-    (context && !context.success)
-  ) {
+  if (!translations && !context) {
     return null
   }
 

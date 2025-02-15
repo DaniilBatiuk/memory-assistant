@@ -1,3 +1,5 @@
+import { SupportedLanguage } from '@cartesia/cartesia-js/api'
+
 export const LANGUAGES: string[] = [
   'German',
   'English',
@@ -7,3 +9,12 @@ export const LANGUAGES: string[] = [
   'Polish',
   'Russian',
 ]
+export const LanguageCode: Record<string, SupportedLanguage> = {
+  German: 'de',
+  English: 'en',
+  Spanish: 'es',
+  French: 'fr',
+  Italian: 'it',
+  Polish: 'pl',
+  Russian: 'ru',
+}

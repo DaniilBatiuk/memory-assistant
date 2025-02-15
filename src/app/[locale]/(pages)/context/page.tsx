@@ -17,9 +17,6 @@ export default async function Context({ searchParams }: { searchParams: SearchPa
 
   const [translations, context] = await getData({ search, from, to })
 
-  console.log('translations', translations)
-  console.log('context', context)
-
   const t = await getTranslations('Context')
 
   return (

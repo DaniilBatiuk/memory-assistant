@@ -19,14 +19,27 @@ export const getData = async ({
     translationApi.getTranslation({ search, from, to }),
     translationApi.getContext({ search, from, to }),
   ])
+  if (!translations.success || !context.success) return [translations, context]
 
-  if (translations.success) {
-    const uniqueTranslations = [...new Set(translations.data.translations)]
+  const uniqueTranslations = [...new Set(translations.data.translations)]
+
+  const filteredExamples = context.data.examples.filter(example => {
+    const regexFrom = new RegExp(`(?<!\\p{L})${search}(?!\\p{L})`, 'iu')
+    const matchFrom = regexFrom.exec(example.source)
+
+    if (example.source.length < 2) return false
+    return Boolean(matchFrom)
+  })
+
+  if (filteredExamples.length === 0) {
     return [
       { success: true, data: { ...translations.data, translations: uniqueTranslations } },
-      context,
+      { success: false, error: 'Not Found' },
     ]
   }
 
-  return [translations, context]
+  return [
+    { success: true, data: { ...translations.data, translations: uniqueTranslations } },
+    { success: true, data: { ...context.data, examples: filteredExamples } },
+  ]
 }
