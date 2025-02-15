@@ -49,9 +49,9 @@ export const Footer: React.FC = async () => {
               type='email'
               placeholder='Email'
               size={'md'}
-              className='w-[344px] max-[960px]:w-full'
+              className='w-[344px] shadow-none max-[960px]:w-full'
             />
-            <Button variant={'outline'} size={'md'}>
+            <Button variant={'outline'} size={'md'} className='shadow-none'>
               {t('subscribe')}
             </Button>
           </div>

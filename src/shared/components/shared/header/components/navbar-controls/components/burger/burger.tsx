@@ -4,9 +4,9 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui'
 
-import { MenuOpen } from '../menu-open/menu-open'
-
 import { cn } from '@/shared/lib/css'
+
+import { MenuOpen } from '../menu-open/menu-open'
 
 export const Burger: React.FC = () => {
   const [burgerActive, setBurgerActive] = useState(false)

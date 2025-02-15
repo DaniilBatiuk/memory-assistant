@@ -23,6 +23,7 @@ export const buttonVariants = cva(
         md: 'h-12 rounded-md px-5 text-base',
         lg: 'adaptive-height-48-54 adaptive-padding-inline-25-40 rounded-lg text-base',
         icon: 'h-9 w-9',
+        iconLg: 'h-12 w-12',
       },
     },
     defaultVariants: {

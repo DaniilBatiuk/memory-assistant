@@ -4,11 +4,11 @@ import { Button } from '@/components/ui'
 
 import { LINKS } from '@/constants'
 
+import { cn } from '@/shared/lib/css'
+
 import { Link } from '@/i18n'
 
 import { DialogTranslate } from '../../../dialog-translate/dialog-translate'
-
-import { cn } from '@/shared/lib/css'
 
 interface BurgerProps {
   burgerActive: boolean

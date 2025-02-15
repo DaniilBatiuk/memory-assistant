@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 
 import { debounce } from '@/helpers'
 
-import { useEvent } from '../useEvent/useEvent'
+import { useEvent } from '../use-event/use-event'
 
 /**
  * @name useDebounceCallback
