@@ -1,21 +1,39 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useLayoutEffect } from 'react'
+import { useShallow } from 'zustand/shallow'
 
 import { Button, SelectLanguage } from '@/components/ui'
 
-import { ICONS, LANGUAGES } from '@/constants'
+import { ICONS } from '@/constants'
+
+import { useContextStore } from '@/store'
 
 export const LanguageSwitcher: React.FC = () => {
   const searchParams = useSearchParams()
-  const fromSearchParam = searchParams.get('from')
-  const toSearchParam = searchParams.get('to')
+  const searchFromParam = searchParams.get('search')
+  const fromFromParam = searchParams.get('from')
+  const toFromParam = searchParams.get('to')
 
-  const [from, setFrom] = useState(() => fromSearchParam ?? LANGUAGES[1])
-  const [to, setTo] = useState(() => toSearchParam ?? LANGUAGES[6])
+  const { setFrom, setTo, from, to, setSearch } = useContextStore(
+    useShallow(state => ({
+      setFrom: state.setFrom,
+      setTo: state.setTo,
+      from: state.from,
+      to: state.to,
+      setSearch: state.setSearch,
+    })),
+  )
+
+  useLayoutEffect(() => {
+    setSearch(searchFromParam || '')
+    setFrom(fromFromParam || 'English')
+    setTo(toFromParam || 'Russian')
+  }, [searchFromParam, fromFromParam, toFromParam])
 
   const switchLanguages = () => {
+    setSearch('')
     setFrom(to)
     setTo(from)
   }

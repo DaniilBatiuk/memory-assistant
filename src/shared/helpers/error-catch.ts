@@ -12,3 +12,9 @@ export const errorCatch = <T extends any[], U>(
     }
   }
 }
+
+export const isSuccessResponse = <T>(
+  result: ErrorCatchReturn<T> | undefined,
+): result is { success: true; data: T } => {
+  return result ? result.success : false
+}

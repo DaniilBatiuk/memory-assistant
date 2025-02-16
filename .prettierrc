@@ -13,6 +13,7 @@
     "@/actions",
     "@/constants",
     "@/hooks",
+    "@/store",
     "@/helpers",
     "@/shared/modules",
     "@/shared/lib",

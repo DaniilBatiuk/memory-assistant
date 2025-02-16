@@ -2,6 +2,11 @@ import { ErrorCatchReturn } from '@/helpers'
 
 import { translationApi } from '@/shared/modules/translation-api'
 
+const createSearchRegex = (search: string) => {
+  const escapedSearch = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return new RegExp(`(?<!\\p{L})${escapedSearch}(?!\\p{L})`, 'iu')
+}
+
 export const getData = async ({
   search,
   from,
@@ -15,31 +20,36 @@ export const getData = async ({
 > => {
   if (!search || !from || !to) return [undefined, undefined]
 
-  const [translations, context] = await Promise.all([
+  const [initialTranslations, initialContext] = await Promise.all([
     translationApi.getTranslation({ search, from, to }),
     translationApi.getContext({ search, from, to }),
   ])
-  if (!translations.success || !context.success) return [translations, context]
 
-  const uniqueTranslations = [...new Set(translations.data.translations)]
+  let translationsResult = initialTranslations
+  let contextResult = initialContext
 
-  const filteredExamples = context.data.examples.filter(example => {
-    const regexFrom = new RegExp(`(?<!\\p{L})${search}(?!\\p{L})`, 'iu')
+  if (!translationsResult.success) {
+    translationsResult = await translationApi.getTranslation({ search, from, to })
+  }
+  if (!contextResult.success) {
+    contextResult = await translationApi.getContext({ search, from, to })
+  }
+
+  if (!translationsResult.success || !contextResult.success) {
+    return [translationsResult, contextResult]
+  }
+
+  const uniqueTranslations = [...new Set(translationsResult.data.translations)]
+
+  const filteredExamples = contextResult.data.examples.filter(example => {
+    const regexFrom = createSearchRegex(search)
     const matchFrom = regexFrom.exec(example.source)
 
-    if (example.source.length < 2) return false
     return Boolean(matchFrom)
   })
 
-  if (filteredExamples.length === 0) {
-    return [
-      { success: true, data: { ...translations.data, translations: uniqueTranslations } },
-      { success: false, error: 'Not Found' },
-    ]
-  }
-
   return [
-    { success: true, data: { ...translations.data, translations: uniqueTranslations } },
-    { success: true, data: { ...context.data, examples: filteredExamples } },
+    { success: true, data: { ...translationsResult.data, translations: uniqueTranslations } },
+    { success: true, data: { ...contextResult.data, examples: filteredExamples } },
   ]
 }
