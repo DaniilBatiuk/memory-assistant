@@ -125,6 +125,8 @@
     "translations": "Translations",
     "examples": "Examples",
     "notFound": "not found in Context.",
+    "tooltip": "Add to dictionary",
+    "myDictionaries": "My dictionaries",
     "error": {
       "title": "Something went wrong.",
       "subtitle": "There was a problem with the request. Please try again."

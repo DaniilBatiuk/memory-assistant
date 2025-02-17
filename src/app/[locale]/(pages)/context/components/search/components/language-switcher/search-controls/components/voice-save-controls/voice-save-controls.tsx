@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
-import { Star, Volume2 } from 'lucide-react'
+import { Volume2 } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 
 import { Button } from '@/components/ui'
 
 import { AudioApi } from '@/shared/modules/audio-api'
+
+import { AddToDictionary } from './components/add-to-dictionary/add-to-dictionary'
 
 export const VoiceSaveControls: React.FC = () => {
   const searchParams = useSearchParams()
@@ -44,15 +46,7 @@ export const VoiceSaveControls: React.FC = () => {
         >
           <Volume2 />
         </Button>
-        <Button
-          variant='outline'
-          size='iconLg'
-          className='[&_svg]:size-[1.35rem]'
-          aria-label='save'
-          type='button'
-        >
-          <Star />
-        </Button>
+        <AddToDictionary />
       </div>
     </div>
   )
