@@ -5,7 +5,8 @@
     "context": "Context",
     "demoDictionary": "Demo dictionary",
     "signIn": "Sign In",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "home": "Home"
   },
   "Footer": {
     "about": "About us",
@@ -131,5 +132,18 @@
       "title": "Something went wrong.",
       "subtitle": "There was a problem with the request. Please try again."
     }
+  },
+  "Dictionaries": {
+    "title": "Dictionaries",
+    "create": "Create",
+    "noDictionariesText": "You don't have any dictionaries yet.",
+    "createTitle": "Create dictionary",
+    "updateTitle": "Update dictionary",
+    "createPlaceholder": {
+      "name": "Name",
+      "description": "Description"
+    },
+    "update": "Update",
+    "delete": "Delete"
   }
 }

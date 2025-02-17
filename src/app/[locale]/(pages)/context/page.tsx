@@ -28,7 +28,7 @@ export default async function Context({ searchParams }: { searchParams: SearchPa
     context.data.examples.length > 0
 
   return (
-    <div className='container-small adaptive-margin-top-20-60'>
+    <div className='container adaptive-margin-top-20-60'>
       <div className='adaptive-margin-bottom-20-30'>
         <h1 className='text-center font-bold adaptive-font-size-30-40 adaptive-margin-bottom-10-15'>
           {t('title')}

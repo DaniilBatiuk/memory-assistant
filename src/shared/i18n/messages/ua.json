@@ -5,7 +5,8 @@
     "context": "Контекст",
     "demoDictionary": "Демо-словник",
     "signIn": "Увійти",
-    "signUp": "Зареєструватися"
+    "signUp": "Зареєструватися",
+    "home": "Головна"
   },
   "Footer": {
     "about": "Про нас",
@@ -131,5 +132,18 @@
       "title": "Щось пішло не так.",
       "subtitle": "Виникла помилка із запитом. Будь ласка, спробуйте ще раз."
     }
+  },
+  "Dictionaries": {
+    "title": "Словники",
+    "create": "Створити",
+    "noDictionariesText": "Ви ще не маєте жодного словника.",
+    "createTitle": "Створити словник",
+    "updateTitle": "Змінити словник",
+    "createPlaceholder": {
+      "name": "Назва",
+      "description": "Опис"
+    },
+    "update": "Змінити",
+    "delete": "Видалити"
   }
 }
