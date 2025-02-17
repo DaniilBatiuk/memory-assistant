@@ -35,7 +35,7 @@ export const DialogTranslate: React.FC<DialogTranslateProps> = ({
 
   const [search, setSearch] = useState('')
   const [from, setFrom] = useState(LANGUAGES[1])
-  const [to, setTo] = useState(LANGUAGES[6])
+  const [to, setTo] = useState(LANGUAGES[5])
 
   const switchLanguages = async () => {
     setFrom(to)

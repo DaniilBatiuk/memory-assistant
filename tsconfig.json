@@ -21,6 +21,7 @@
     "paths": {
       "@/components/ui": ["./src/shared/components/ui"],
       "@/components/shared": ["./src/shared/components/shared"],
+      "@/store": ["./src/shared/store"],
       "@/actions": ["./src/shared/actions"],
       "@/constants": ["./src/shared/constants"],
       "@/hooks": ["./src/shared/hooks"],

@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
 
 import { useToast } from '@/hooks'
@@ -10,17 +11,14 @@ interface NotFoundTranslationProps {
   textToTranslate: string
   translations: ErrorCatchReturn<ITranslation> | undefined
   context: ErrorCatchReturn<IContext> | undefined
-  errorTitle: string
-  errorSubtitle: string
 }
 
 export const NotFoundTranslation: React.FC<NotFoundTranslationProps> = ({
   textToTranslate,
   translations,
   context,
-  errorTitle,
-  errorSubtitle,
 }: NotFoundTranslationProps) => {
+  const t = useTranslations('Context')
   const { toast } = useToast()
 
   useEffect(() => {
@@ -31,8 +29,8 @@ export const NotFoundTranslation: React.FC<NotFoundTranslationProps> = ({
       setTimeout(() => {
         toast({
           variant: 'destructive',
-          title: errorTitle,
-          description: errorSubtitle,
+          title: t('error.title'),
+          description: t('error.subtitle'),
         })
       }, 0)
     }

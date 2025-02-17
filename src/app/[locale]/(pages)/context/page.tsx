@@ -1,5 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 
+import { isSuccessResponse } from '@/helpers'
+
 import { Examples } from './components/examples/examples'
 import { NotFoundTranslation } from './components/not-found-translation/not-found-translation'
 import { Search } from './components/search/search'
@@ -19,6 +21,12 @@ export default async function Context({ searchParams }: { searchParams: SearchPa
 
   const t = await getTranslations('Context')
 
+  const hasValidData =
+    isSuccessResponse(translations) &&
+    translations.data.translations.length > 0 &&
+    isSuccessResponse(context) &&
+    context.data.examples.length > 0
+
   return (
     <div className='container-small adaptive-margin-top-20-60'>
       <div className='adaptive-margin-bottom-20-30'>
@@ -27,13 +35,8 @@ export default async function Context({ searchParams }: { searchParams: SearchPa
         </h1>
         <p className='text-center text-foreground/55 adaptive-font-size-16-18'>{t('subtitle')}</p>
       </div>
-      <Search searchPlaceholder={t('placeholder')} />
-      {translations &&
-      translations.success &&
-      translations.data.translations.length > 0 &&
-      context &&
-      context.success &&
-      context.data.examples.length > 0 ? (
+      <Search />
+      {hasValidData ? (
         <>
           <TranslationsList
             title={t('translations')}
@@ -48,11 +51,9 @@ export default async function Context({ searchParams }: { searchParams: SearchPa
         </>
       ) : (
         <NotFoundTranslation
-          textToTranslate={search + t('notFound')}
+          textToTranslate={search + ' ' + t('notFound')}
           context={context}
           translations={translations}
-          errorTitle={t('error.title')}
-          errorSubtitle={t('error.subtitle')}
         />
       )}
     </div>
