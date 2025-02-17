@@ -23,6 +23,7 @@ const properties = [
   'padding-bottom',
   'padding-left',
   'padding-inline',
+  'padding-block',
   'gap',
   'row-gap',
   'column-gap',
@@ -65,6 +66,7 @@ export default {
     colors: {
       background: 'hsl(var(--background))',
       foreground: 'hsl(var(--foreground))',
+      red: 'hsl(var(--red))',
       card: {
         DEFAULT: 'hsl(var(--card))',
         foreground: 'hsl(var(--card-foreground))',

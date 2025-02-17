@@ -8,7 +8,7 @@ import AboutImage from '@/../public/about-image.webp'
 export default async function About() {
   const t = await getTranslations('AboutPage')
   return (
-    <section className='container-small adaptive-margin-top-20-60'>
+    <section className='container adaptive-margin-top-20-60'>
       <div>
         <h1 className='text-center font-bold adaptive-font-size-30-40 adaptive-margin-bottom-10-15'>
           {t('title')}

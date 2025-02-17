@@ -20,7 +20,7 @@ export const TranslationItem: React.FC<TranslationItemProps> = ({
 
   return (
     <div
-      className='shrink-0 rounded-md border-t-2 border-border-accent bg-[#F3F3F3] px-3 py-2 text-center dark:bg-[#151517]'
+      className='z-0 shrink-0 rounded-md border-t-2 border-border-accent bg-[#F3F3F3] px-3 py-2 text-center dark:bg-[#151517]'
       ref={setNodeRef}
       style={style}
       {...listeners}
