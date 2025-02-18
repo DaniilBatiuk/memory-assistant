@@ -3,4 +3,5 @@ export const LINKS = {
   About: '/about',
   Context: '/context',
   Dictionaries: '/dictionaries',
+  Dictionary: '/dictionary',
 }

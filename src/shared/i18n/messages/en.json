@@ -145,5 +145,17 @@
     },
     "update": "Update",
     "delete": "Delete"
+  },
+  "Dictionary": {
+    "title": "Dictionary",
+    "noDictionaryText": "You don't have any words in your dictionary yet.",
+    "quiz": "Quiz",
+    "updatePlaceholder": {
+      "word": "Word",
+      "translations": "Translations"
+    },
+    "update": "Update",
+    "delete": "Delete",
+    "dragToTop": "Drag to top"
   }
 }
