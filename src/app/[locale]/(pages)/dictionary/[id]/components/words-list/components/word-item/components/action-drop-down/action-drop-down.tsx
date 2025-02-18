@@ -13,19 +13,16 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui'
 
-import { UpdateDictionaryDialog } from '../../../../../update-dictionary-dialog/update-dictionary-dialog'
+import { UpdateWordDialog } from './components/update-word-dialog/update-word-dialog'
 
 export const ActionDropDown: React.FC = () => {
-  const t = useTranslations('Dictionaries')
+  const t = useTranslations('Dictionary')
 
   const [openUpdateMenu, setOpenUpdateMenu] = useState(false)
 
   return (
     <>
-      <UpdateDictionaryDialog
-        openUpdateMenu={openUpdateMenu}
-        setOpenUpdateMenu={setOpenUpdateMenu}
-      />
+      <UpdateWordDialog openUpdateMenu={openUpdateMenu} setOpenUpdateMenu={setOpenUpdateMenu} />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -37,8 +34,14 @@ export const ActionDropDown: React.FC = () => {
             <EllipsisVertical />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align='start' alignOffset={-92} className='mr-[15px] w-32'>
+        <DropdownMenuContent
+          align='start'
+          alignOffset={-92}
+          className='mr-[15px] w-32'
+          onClick={e => e.stopPropagation()}
+        >
           <DropdownMenuGroup>
+            <DropdownMenuItem>{t('dragToTop')}</DropdownMenuItem>
             <DropdownMenuItem onClick={() => setOpenUpdateMenu(true)}>
               {t('update')}
             </DropdownMenuItem>

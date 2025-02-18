@@ -145,5 +145,17 @@
     },
     "update": "Змінити",
     "delete": "Видалити"
+  },
+  "Dictionary": {
+    "title": "Словник",
+    "noDictionaryText": "Ви ще не маєте жодного слова у словнику.",
+    "quiz": "Тест",
+    "updatePlaceholder": {
+      "word": "Слово",
+      "translations": "Переклади"
+    },
+    "update": "Змінити",
+    "delete": "Видалити",
+    "dragToTop": "Вгору"
   }
 }

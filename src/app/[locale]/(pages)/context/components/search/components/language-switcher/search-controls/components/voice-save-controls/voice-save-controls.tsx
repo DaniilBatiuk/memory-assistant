@@ -1,10 +1,9 @@
-import { useQuery } from '@tanstack/react-query'
 import { Volume2 } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 
 import { Button } from '@/components/ui'
 
-import { AudioApi } from '@/shared/modules/audio-api'
+import { UseAudio } from '@/hooks'
 
 import { AddToDictionary } from './components/add-to-dictionary/add-to-dictionary'
 
@@ -13,22 +12,7 @@ export const VoiceSaveControls: React.FC = () => {
   const searchFromParam = searchParams.get('search')
   const fromFromParam = searchParams.get('from')
 
-  const { data: audioUrl } = useQuery({
-    queryKey: ['audio', searchFromParam, fromFromParam],
-    queryFn: () =>
-      AudioApi.getAudioUrl({
-        text: searchFromParam ?? '',
-        lang: fromFromParam ?? '',
-      }),
-    enabled: Boolean(searchFromParam),
-  })
-
-  const playAudio = async () => {
-    if (!audioUrl || !audioUrl.success) return
-
-    const audio = new Audio(audioUrl.data ?? '')
-    audio.play()
-  }
+  const { playAudio } = UseAudio({ word: searchFromParam ?? '', lang: fromFromParam ?? '' })
 
   return (
     <div className='flex items-center justify-between gap-3 max-[510px]:w-full'>
