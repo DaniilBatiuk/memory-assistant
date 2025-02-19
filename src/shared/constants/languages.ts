@@ -7,6 +7,5 @@ export const LanguageCode: Record<string, SupportedLanguage> = {
   Spanish: 'es',
   French: 'fr',
   Italian: 'it',
-  Polish: 'pl',
   Russian: 'ru',
 }

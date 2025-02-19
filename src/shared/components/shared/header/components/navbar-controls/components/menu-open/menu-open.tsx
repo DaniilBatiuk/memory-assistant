@@ -67,7 +67,7 @@ export const MenuOpen: React.FC<BurgerProps> = ({ burgerActive, closeBurgerMenu 
         </li>
         <li className='flex w-full'>
           <Link
-            href={LINKS.Dictionaries + '/1'}
+            href={LINKS.Dictionaries}
             onClick={closeBurgerMenu}
             className='w-full py-3 text-center text-xl font-medium text-foreground/60 hover:cursor-pointer hover:bg-foreground/5 hover:text-foreground'
           >
