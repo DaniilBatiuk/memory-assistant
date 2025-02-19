@@ -1,7 +1,5 @@
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui'
-
 import { LINKS } from '@/constants'
 
 import { cn } from '@/shared/lib/css'
@@ -9,6 +7,9 @@ import { cn } from '@/shared/lib/css'
 import { Link } from '@/i18n'
 
 import { DialogTranslate } from '../../../dialog-translate/dialog-translate'
+
+import { AuthButton } from './components/auth-button/auth-button'
+import { DictionariesLi } from './components/dictionaries-li/dictionaries-li'
 
 interface BurgerProps {
   burgerActive: boolean
@@ -65,19 +66,9 @@ export const MenuOpen: React.FC<BurgerProps> = ({ burgerActive, closeBurgerMenu 
             {t('context')}
           </Link>
         </li>
-        <li className='flex w-full'>
-          <Link
-            href={LINKS.Dictionaries}
-            onClick={closeBurgerMenu}
-            className='w-full py-3 text-center text-xl font-medium text-foreground/60 hover:cursor-pointer hover:bg-foreground/5 hover:text-foreground'
-          >
-            {t('demoDictionary')}
-          </Link>
-        </li>
+        <DictionariesLi closeBurgerMenu={closeBurgerMenu} />
       </ul>
-      <Button size='md' className='full-width absolute bottom-[15px] mx-[15px] min-[551px]:hidden'>
-        {t('signIn')}
-      </Button>
+      <AuthButton />
     </nav>
   )
 }

@@ -1,21 +1,15 @@
 'use server'
 
-import { errorCatch } from '@/helpers'
+// export const getDictionary = errorCatch(async (): Promise<IDictionaryDto[]> => {
+//   const user = await getUser()
 
-import { prisma } from '../lib/db'
+//   if (!user.success || !user.data) return []
 
-import { getUser } from './user'
+//   const dictionaries = await prisma.dictionary.findMany({
+//     where: {
+//       userId: user.data.id,
+//     },
+//   })
 
-export const getDictionary = errorCatch(async (): Promise<IDictionaryDto[]> => {
-  const user = await getUser()
-
-  if (!user.success || !user.data) return []
-
-  const dictionaries = await prisma.dictionary.findMany({
-    where: {
-      userId: user.data.id,
-    },
-  })
-
-  return dictionaries
-})
+//   return dictionaries
+// })

@@ -16,10 +16,11 @@ type IContext = {
 
 type IUserDto = {
   id: string
-  clerkId: string
   email: string
   name: string
-  imageUrl: string
+  provider: string
+  providerId: string
+  imageUrl?: string
   createdAt: Date
 }
 
