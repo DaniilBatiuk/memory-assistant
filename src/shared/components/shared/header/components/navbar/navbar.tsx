@@ -37,14 +37,6 @@ export const Navbar: React.FC = async () => {
               {t('context')}
             </Link>
           </li>
-          <li>
-            <Link
-              href={LINKS.Dictionaries + '/1'}
-              className='text-base text-foreground/55 hover:cursor-pointer hover:text-foreground'
-            >
-              {t('demoDictionary')}
-            </Link>
-          </li>
         </ul>
       </nav>
     </div>

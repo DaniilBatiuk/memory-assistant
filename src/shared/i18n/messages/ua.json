@@ -3,9 +3,10 @@
     "about": "Про нас",
     "translation": "Переклад",
     "context": "Контекст",
-    "demoDictionary": "Демо-словник",
+    "dictionaries": "Словники",
     "signIn": "Увійти",
     "signUp": "Зареєструватися",
+    "signOut": "Вийти",
     "home": "Головна"
   },
   "Footer": {

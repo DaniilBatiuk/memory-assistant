@@ -3,9 +3,10 @@
     "about": "About us",
     "translation": "Translation",
     "context": "Context",
-    "demoDictionary": "Demo dictionary",
+    "dictionaries": "Dictionaries",
     "signIn": "Sign In",
     "signUp": "Sign Up",
+    "signOut": "Sign Out",
     "home": "Home"
   },
   "Footer": {
