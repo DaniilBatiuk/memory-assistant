@@ -1,6 +1,6 @@
 import { ErrorCatchReturn } from '@/helpers'
 
-import { translationApi } from '@/shared/modules/translation-api'
+import { translationApi } from '@/models'
 
 const createSearchRegex = (search: string) => {
   const escapedSearch = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')

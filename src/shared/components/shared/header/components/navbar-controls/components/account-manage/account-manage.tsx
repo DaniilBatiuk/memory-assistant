@@ -25,8 +25,6 @@ export const AccountManage: React.FC = () => {
 
   const { data: session } = useSession()
 
-  console.log('session', session)
-
   if (session === undefined)
     return <Skeleton className='h-[36px] w-[77px] rounded max-[550px]:hidden' />
 

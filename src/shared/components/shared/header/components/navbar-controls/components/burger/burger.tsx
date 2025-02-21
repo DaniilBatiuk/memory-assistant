@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui'
 
-import { cn } from '@/shared/lib/css'
+import { cn } from '@/lib'
 
 import { MenuOpen } from '../menu-open/menu-open'
 
