@@ -24,11 +24,14 @@ type IUserDto = {
   createdAt: Date
 }
 
+type IUser = Omit<IUserDto, 'createdAt' | 'providerId' | 'provider'>
+
 type IDictionaryDto = {
   id: string
-  createdAt: Date
   title: string
   description: string
-  language: Languages
   userId: string
+  createdAt: Date
 }
+
+type IDictionary = Omit<IDictionaryDto, 'createdAt'>

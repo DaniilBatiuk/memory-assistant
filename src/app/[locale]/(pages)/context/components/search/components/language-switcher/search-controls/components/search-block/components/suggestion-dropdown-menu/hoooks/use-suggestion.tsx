@@ -6,9 +6,9 @@ import { LINKS } from '@/constants'
 
 import { useContextStore } from '@/store'
 
-import { translationApi } from '@/shared/modules/translation-api'
-
 import { useRouter } from '@/i18n'
+
+import { translationApi } from '@/models'
 
 interface IUseSuggestion {
   setIsFocused: Dispatch<SetStateAction<boolean>>

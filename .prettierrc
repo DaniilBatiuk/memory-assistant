@@ -15,8 +15,9 @@
     "@/hooks",
     "@/store",
     "@/helpers",
-    "@/shared/modules",
-    "@/shared/lib",
+    "@/validators",
+    "@/modules",
+    "@/lib",
     "@/i18n",
     "^../(.*)",
     "^./(.*)"

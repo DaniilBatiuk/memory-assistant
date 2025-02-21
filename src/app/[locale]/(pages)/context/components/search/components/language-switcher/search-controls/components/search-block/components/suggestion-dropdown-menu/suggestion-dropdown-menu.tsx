@@ -7,7 +7,7 @@ import { LINKS } from '@/constants'
 
 import { isSuccessResponse } from '@/helpers'
 
-import { cn } from '@/shared/lib/css'
+import { cn } from '@/lib'
 
 import { useSuggestion } from './hoooks/use-suggestion'
 

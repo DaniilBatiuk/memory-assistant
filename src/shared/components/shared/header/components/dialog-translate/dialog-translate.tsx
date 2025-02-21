@@ -20,9 +20,9 @@ import { ICONS, LANGUAGES } from '@/constants'
 
 import { useDebounceValue } from '@/hooks'
 
-import { translationApi } from '@/shared/modules/translation-api'
+import { cn } from '@/lib'
 
-import { cn } from '@/shared/lib/css'
+import { translationApi } from '@/models'
 
 interface DialogTranslateProps {
   children: React.ReactNode

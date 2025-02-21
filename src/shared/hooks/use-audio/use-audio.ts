@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { AudioApi } from '@/shared/modules/audio-api'
+import { AudioApi } from '@/models'
 
 interface IUseAudio {
   word: string

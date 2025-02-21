@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import { LINKS } from '@/constants'
 
-import { cn } from '@/shared/lib/css'
+import { cn } from '@/lib'
 
 import { Link } from '@/i18n'
 

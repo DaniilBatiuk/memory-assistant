@@ -36,6 +36,7 @@ export const translationApi = {
     }): Promise<IContext> => {
       const response: IContext = await reverso.getContext(search, from, to)
 
+      console.log('CONTEXT', response)
       if (!response.ok) {
         throw new Error('Something went wrong')
       }
@@ -68,7 +69,7 @@ export const translationApi = {
           target_lang: LanguageCode[to],
         }),
       }).then(res => res.json())
-
+      console.log('getSuggestion', response)
       return response
     },
   ),

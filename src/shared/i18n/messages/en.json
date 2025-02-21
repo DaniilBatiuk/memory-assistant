@@ -144,6 +144,18 @@
       "name": "Name",
       "description": "Description"
     },
+    "createDictionaryErrors": {
+      "title": {
+        "min": "The title must contain at least 2 characters",
+        "max": "The title must contain no more than 100 characters",
+        "required": "The title field is required"
+      },
+      "description": {
+        "min": "The description must contain at least 5 characters",
+        "max": "The description must contain no more than 500 characters",
+        "required": "The description field is required"
+      }
+    },
     "update": "Update",
     "delete": "Delete"
   },

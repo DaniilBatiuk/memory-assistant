@@ -1,41 +1,22 @@
 'use server'
 
-// import { currentUser } from '@clerk/nextjs/server'
+import { headers } from 'next/headers'
 
-// import { errorCatch } from '@/helpers'
+import { LINKS, LanguageCode } from '@/constants'
 
-// import { prisma } from '../lib/db'
+import { getUserSession } from '@/helpers'
 
-// export const getUser = errorCatch(async (): Promise<IUserDto | null> => {
-//   const user = await currentUser()
+import { redirect } from '@/i18n'
 
-//   console.log('user', user)
+export const getUserOrRedirect = async (): Promise<IUser> => {
+  const user = await getUserSession()
 
-//   if (!user) return null
+  const locale = (await headers()).get('x-next-intl-locale') || 'en'
 
-//   console.log('a')
+  if (!user) {
+    redirect({ href: LINKS.Home, locale })
+    throw new Error(locale === LanguageCode.English ? 'User not found' : 'Користувача не знайдено')
+  }
 
-//   const userExist = await prisma.user.findUnique({
-//     where: {
-//       clerkId: user.id,
-//     },
-//   })
-//   console.log('loggedInUser', userExist)
-
-//   if (userExist) return userExist
-
-//   console.log('b')
-
-//   const newUser = await prisma.user.create({
-//     data: {
-//       clerkId: user.id,
-//       name: `${user.firstName} ${user.lastName}`,
-//       imageUrl: user.imageUrl,
-//       email: user.emailAddresses[0].emailAddress,
-//     },
-//   })
-
-//   console.log('newUser', newUser)
-
-//   return newUser
-// })
+  return user
+}
