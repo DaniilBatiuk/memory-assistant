@@ -8,13 +8,14 @@ interface IUseAudio {
 }
 
 export const UseAudio = ({ word, lang }: IUseAudio) => {
-  const { data: audioUrl } = useQuery({
+  const { data: audioUrl, isFetching } = useQuery({
     queryKey: ['audio', word, lang],
     queryFn: () =>
       AudioApi.getAudioUrl({
         text: word,
         lang: lang,
       }),
+    enabled: Boolean(word && lang),
   })
 
   const playAudio = async () => {
@@ -24,5 +25,5 @@ export const UseAudio = ({ word, lang }: IUseAudio) => {
     audio.play()
   }
 
-  return { playAudio }
+  return { playAudio, isFetching }
 }

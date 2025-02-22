@@ -13,16 +13,28 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui'
 
+import { useWordDelete, useWordUpdateCreatedAt } from '@/hooks'
+
 import { UpdateWordDialog } from './components/update-word-dialog/update-word-dialog'
 
-export const ActionDropDown: React.FC = () => {
+interface ActionDropDownProps {
+  word: IWordDto
+}
+
+export const ActionDropDown: React.FC<ActionDropDownProps> = ({ word }: ActionDropDownProps) => {
   const t = useTranslations('Dictionary')
 
   const [openUpdateMenu, setOpenUpdateMenu] = useState(false)
-
+  const { mutate: deleteWord, isPending: deleteWordIsPending } = useWordDelete(word.dictionaryId)
+  const { mutate: updateWordCreatedAt, isPending: updateWordCreatedAtIsPending } =
+    useWordUpdateCreatedAt(word.dictionaryId)
   return (
     <>
-      <UpdateWordDialog openUpdateMenu={openUpdateMenu} setOpenUpdateMenu={setOpenUpdateMenu} />
+      <UpdateWordDialog
+        word={word}
+        openUpdateMenu={openUpdateMenu}
+        setOpenUpdateMenu={setOpenUpdateMenu}
+      />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -41,11 +53,21 @@ export const ActionDropDown: React.FC = () => {
           onClick={e => e.stopPropagation()}
         >
           <DropdownMenuGroup>
-            <DropdownMenuItem>{t('dragToTop')}</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setOpenUpdateMenu(true)}>
+            <DropdownMenuItem
+              className='cursor-pointer'
+              disabled={updateWordCreatedAtIsPending}
+              onClick={() => updateWordCreatedAt(word.id)}
+            >
+              {t('dragToTop')}
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setOpenUpdateMenu(true)} className='cursor-pointer'>
               {t('update')}
             </DropdownMenuItem>
-            <DropdownMenuItem className='text-red focus:bg-red/10 focus:text-red'>
+            <DropdownMenuItem
+              className='cursor-pointer text-red focus:bg-red/10 focus:text-red'
+              onClick={() => deleteWord(word.id)}
+              disabled={deleteWordIsPending}
+            >
               {t('delete')}
             </DropdownMenuItem>
           </DropdownMenuGroup>

@@ -1,11 +1,11 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 
 import { deleteDictionary } from '@/actions'
 
-import { getDictionariesQueryOptions } from '../lib'
+import { getDictionariesQueryOptions, getQueryClient } from '../lib'
 
 export const useDictionaryDelete = (userId: string) => {
-  const queryClient = useQueryClient()
+  const queryClient = getQueryClient()
 
   return useMutation({
     mutationFn: deleteDictionary,

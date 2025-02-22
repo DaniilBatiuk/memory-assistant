@@ -31,7 +31,19 @@ type IDictionaryDto = {
   title: string
   description: string
   userId: string
+  words: IWordDto[]
   createdAt: Date
 }
 
 type IDictionary = Omit<IDictionaryDto, 'createdAt'>
+
+type IWordDto = {
+  id: string
+  word: string
+  translations: string
+  dictionaryId: string
+  language: Languages
+  createdAt: Date
+}
+
+type IWordCreate = Omit<IWordDto, 'createdAt' | 'id'>

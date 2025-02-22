@@ -46,6 +46,8 @@ model Word {
 
   Dictionary   Dictionary @relation(fields: [dictionaryId], references: [id])
   dictionaryId String
+
+  createdAt DateTime @default(now())
 }
 
 enum Languages {

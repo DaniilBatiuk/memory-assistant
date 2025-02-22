@@ -1,13 +1,13 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 
 import { updateDictionary } from '@/actions'
 
 import { UpdateDictionary } from '@/validators'
 
-import { getDictionariesQueryOptions } from '../lib'
+import { getDictionariesQueryOptions, getQueryClient } from '../lib'
 
 export const useDictionaryUpdate = (userId: string) => {
-  const queryClient = useQueryClient()
+  const queryClient = getQueryClient()
 
   return useMutation({
     mutationFn: updateDictionary,
@@ -26,18 +26,6 @@ export const useDictionaryUpdate = (userId: string) => {
       )
 
       return { previousDictionaries, updateDictionary }
-    },
-
-    onSuccess: (updatedDictionary, _, context) => {
-      if (context) {
-        queryClient.setQueryData<IDictionary[]>(
-          getDictionariesQueryOptions(userId).queryKey,
-          (oldDictionaries = []) =>
-            oldDictionaries.map(dict =>
-              dict.id === updatedDictionary.id ? updatedDictionary : dict,
-            ),
-        )
-      }
     },
 
     onError: (_, __, context) => {

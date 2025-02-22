@@ -1,14 +1,14 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { v4 as uuidv4 } from 'uuid'
 
 import { createDictionary } from '@/actions'
 
 import { CreateDictionary } from '@/validators'
 
-import { getDictionariesQueryOptions } from '../lib'
+import { getDictionariesQueryOptions, getQueryClient } from '../lib'
 
 export const useDictionaryAdd = (userId: string) => {
-  const queryClient = useQueryClient()
+  const queryClient = getQueryClient()
 
   return useMutation({
     mutationFn: createDictionary,
@@ -21,22 +21,22 @@ export const useDictionaryAdd = (userId: string) => {
         queryClient.getQueryData<IDictionary[]>(getDictionariesQueryOptions(userId).queryKey) || []
 
       queryClient.setQueryData<IDictionary[]>(getDictionariesQueryOptions(userId).queryKey, [
+        { ...newDictionary, id: tempId, userId, words: [] },
         ...previousDictionaries,
-        { ...newDictionary, id: tempId, userId },
       ])
 
       return { previousDictionaries, tempId }
     },
 
-    onSuccess: (savedDictionary, _, context) => {
-      if (context?.tempId) {
-        queryClient.setQueryData<IDictionary[]>(
-          getDictionariesQueryOptions(userId).queryKey,
-          (oldDictionaries = []) =>
-            oldDictionaries.map(dict => (dict.id === context.tempId ? savedDictionary : dict)),
-        )
-      }
-    },
+    // onSuccess: (savedDictionary, _, context) => {
+    //   if (context?.tempId) {
+    //     queryClient.setQueryData<IDictionary[]>(
+    //       getDictionariesQueryOptions(userId).queryKey,
+    //       (oldDictionaries = []) =>
+    //         oldDictionaries.map(dict => (dict.id === context.tempId ? savedDictionary : dict)),
+    //     )
+    //   }
+    // },
 
     onError: (_, __, context) => {
       if (context) {

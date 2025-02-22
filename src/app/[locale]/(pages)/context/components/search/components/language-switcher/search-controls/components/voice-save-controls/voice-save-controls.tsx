@@ -12,7 +12,10 @@ export const VoiceSaveControls: React.FC = () => {
   const searchFromParam = searchParams.get('search')
   const fromFromParam = searchParams.get('from')
 
-  const { playAudio } = UseAudio({ word: searchFromParam ?? '', lang: fromFromParam ?? '' })
+  const { playAudio, isFetching } = UseAudio({
+    word: searchFromParam ?? '',
+    lang: fromFromParam ?? '',
+  })
 
   return (
     <div className='flex items-center justify-between gap-3 max-[510px]:w-full'>
@@ -21,6 +24,7 @@ export const VoiceSaveControls: React.FC = () => {
       </h3>
       <div className='flex gap-2'>
         <Button
+          disabled={!!!searchFromParam || !!!fromFromParam || isFetching}
           variant='outline'
           size='iconLg'
           className='[&_svg]:size-[1.35rem]'
@@ -30,7 +34,7 @@ export const VoiceSaveControls: React.FC = () => {
         >
           <Volume2 />
         </Button>
-        <AddToDictionary />
+        <AddToDictionary searchFromParam={searchFromParam} fromFromParam={fromFromParam} />
       </div>
     </div>
   )

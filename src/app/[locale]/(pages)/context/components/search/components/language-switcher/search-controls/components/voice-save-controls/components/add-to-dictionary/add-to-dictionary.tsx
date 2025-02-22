@@ -1,4 +1,6 @@
+import { useQuery } from '@tanstack/react-query'
 import { Star } from 'lucide-react'
+import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 
 import {
@@ -6,19 +8,37 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui'
 
-export const AddToDictionary: React.FC = () => {
+import { getDictionariesQueryOptions } from '@/lib'
+
+import { DictionaryItem } from './components/dictionary-item/dictionary-item'
+
+interface AddToDictionaryProps {
+  searchFromParam: string | null
+  fromFromParam: string | null
+}
+
+export const AddToDictionary: React.FC<AddToDictionaryProps> = ({
+  searchFromParam,
+  fromFromParam,
+}: AddToDictionaryProps) => {
   const t = useTranslations('Context')
+  const { data: session } = useSession()
+
+  const { data: dictionaries, isPending } = useQuery({
+    ...getDictionariesQueryOptions(session?.user.id ?? ''),
+    enabled: !!session?.user.id,
+  })
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
+          disabled={!session?.user.id || !!!searchFromParam || !!!fromFromParam}
           variant='outline'
           size='iconLg'
           className='!ring-0 [&_svg]:size-[1.35rem]'
@@ -32,10 +52,20 @@ export const AddToDictionary: React.FC = () => {
         <DropdownMenuLabel>{t('myDictionaries')}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className='truncate'>En-Ru</DropdownMenuItem>
-          <DropdownMenuItem className='truncate'>Ru-En</DropdownMenuItem>
-          <DropdownMenuItem className='truncate'>Fr-Ru</DropdownMenuItem>
-          <DropdownMenuItem className='truncate'>Ru-Rn</DropdownMenuItem>
+          {!!searchFromParam && !!fromFromParam && dictionaries && dictionaries.length > 0 ? (
+            dictionaries.map(dictionary => (
+              <DictionaryItem
+                key={dictionary.id}
+                dictionary={dictionary}
+                searchFromParam={searchFromParam}
+                fromFromParam={fromFromParam}
+              />
+            ))
+          ) : isPending ? (
+            <div className='py-2 text-center'>{t('loading')}</div>
+          ) : (
+            <div className='py-2 text-center'>{t('noDictionariesText')}</div>
+          )}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
