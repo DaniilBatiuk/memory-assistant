@@ -38,8 +38,6 @@ export const TranslationsList: React.FC<TranslationsListProps> = ({
     )
   }, [translations, setTranslations])
 
-  console.log('items', items)
-
   const handleDragEnd = (event: any) => {
     const { active, over } = event
     if (active.id !== over.id) {

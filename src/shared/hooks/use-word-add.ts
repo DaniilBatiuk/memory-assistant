@@ -3,9 +3,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { addWordToDictionary } from '@/actions'
 
-import { getDictionaryQueryOptions, getQueryClient } from '../lib'
+import { getDictionariesQueryOptions, getDictionaryQueryOptions, getQueryClient } from '../lib'
 
-export const useWordAdd = (dictionaryId: string) => {
+export const useWordAdd = (dictionaryId: string, userId: string) => {
   const queryClient = getQueryClient()
 
   return useMutation({
@@ -45,6 +45,9 @@ export const useWordAdd = (dictionaryId: string) => {
 
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: getDictionaryQueryOptions(dictionaryId).queryKey })
+      queryClient.invalidateQueries({
+        queryKey: getDictionariesQueryOptions(userId).queryKey,
+      })
     },
   })
 }

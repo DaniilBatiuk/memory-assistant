@@ -34,13 +34,10 @@ export const translationApi = {
       from: string
       to: string
     }): Promise<ITranslationDto> => {
-      //const response: ITranslation = await reverso.getTranslation(search, from, to)
-
       const response = (await fetch(
         `${process.env.NEXT_PUBLIC_YANDEX_API_URL}/lookup?key=${process.env.NEXT_PUBLIC_YANDEX_API_KEY}&lang=${LANGUAGE_CODE[from]}-${LANGUAGE_CODE[to]}&text=${search}`,
       ).then(res => res.json())) as ITranslationDto
 
-      console.log('response', response)
       if (response.code !== 200) {
         throw new Error('Something went wrong')
       }

@@ -8,6 +8,7 @@ import { useWordAdd } from '@/hooks'
 import { useContextStore } from '@/store'
 
 interface DictionaryItemProps {
+  userId: string
   dictionary: IDictionary
   searchFromParam: string
   fromFromParam: string
@@ -17,8 +18,9 @@ export const DictionaryItem: React.FC<DictionaryItemProps> = ({
   dictionary,
   searchFromParam,
   fromFromParam,
+  userId,
 }: DictionaryItemProps) => {
-  const { mutate: addWord } = useWordAdd(dictionary.id)
+  const { mutate: addWord } = useWordAdd(dictionary.id, userId)
 
   const { translations } = useContextStore(
     useShallow(state => ({

@@ -55,6 +55,7 @@ export const AddToDictionary: React.FC<AddToDictionaryProps> = ({
           {!!searchFromParam && !!fromFromParam && dictionaries && dictionaries.length > 0 ? (
             dictionaries.map(dictionary => (
               <DictionaryItem
+                userId={session?.user.id ?? ''}
                 key={dictionary.id}
                 dictionary={dictionary}
                 searchFromParam={searchFromParam}
