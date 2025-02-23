@@ -9,14 +9,12 @@ import { ErrorCatchReturn } from '@/helpers'
 
 interface NotFoundTranslationProps {
   textToTranslate: string
-  translations: ErrorCatchReturn<ITranslation> | undefined
-  context: ErrorCatchReturn<IContext> | undefined
+  translations: ErrorCatchReturn<ITranslationDto> | undefined
 }
 
 export const NotFoundTranslation: React.FC<NotFoundTranslationProps> = ({
   textToTranslate,
   translations,
-  context,
 }: NotFoundTranslationProps) => {
   const t = useTranslations('Context')
   const { toast } = useToast()
@@ -24,8 +22,8 @@ export const NotFoundTranslation: React.FC<NotFoundTranslationProps> = ({
   useEffect(() => {
     const translationsError =
       translations && !translations.success && translations.error === 'Something went wrong'
-    const contextError = context && !context.success && context.error === 'Something went wrong'
-    if (translationsError || contextError) {
+
+    if (translationsError) {
       setTimeout(() => {
         toast({
           variant: 'destructive',
@@ -34,9 +32,9 @@ export const NotFoundTranslation: React.FC<NotFoundTranslationProps> = ({
         })
       }, 0)
     }
-  }, [translations, context, toast])
+  }, [translations, toast])
 
-  if (!translations && !context) {
+  if (!translations) {
     return null
   }
 

@@ -1,6 +1,19 @@
-type ITranslation = {
+type ITranslationText = {
   ok: boolean
   translations: string[]
+}
+
+type ITranslationDto = {
+  code: number
+  def: Definition[]
+}
+
+type Definition = {
+  tr: Translation[]
+}
+type Translation = {
+  pos: string
+  text: string
 }
 
 type Example = {
@@ -42,7 +55,7 @@ type IWordDto = {
   word: string
   translations: string
   dictionaryId: string
-  language: Languages
+  language: string
   createdAt: Date
 }
 

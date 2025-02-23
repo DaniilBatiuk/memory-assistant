@@ -1,10 +1,11 @@
 import { ArrowUpNarrowWide } from 'lucide-react'
+import { useShallow } from 'zustand/shallow'
 
 import { DropdownMenuItem, DropdownMenuShortcut } from '@/components/ui'
 
-import { LanguageCode } from '@/constants'
-
 import { useWordAdd } from '@/hooks'
+
+import { useContextStore } from '@/store'
 
 interface DictionaryItemProps {
   dictionary: IDictionary
@@ -19,6 +20,12 @@ export const DictionaryItem: React.FC<DictionaryItemProps> = ({
 }: DictionaryItemProps) => {
   const { mutate: addWord } = useWordAdd(dictionary.id)
 
+  const { translations } = useContextStore(
+    useShallow(state => ({
+      translations: state.translations,
+    })),
+  )
+
   return (
     <DropdownMenuItem
       key={dictionary.id}
@@ -27,8 +34,8 @@ export const DictionaryItem: React.FC<DictionaryItemProps> = ({
         addWord({
           word: searchFromParam,
           dictionaryId: dictionary.id,
-          translations: 'слово, словарь, словокоб, столь',
-          language: LanguageCode[fromFromParam],
+          translations: translations,
+          language: fromFromParam,
         })
       }
     >

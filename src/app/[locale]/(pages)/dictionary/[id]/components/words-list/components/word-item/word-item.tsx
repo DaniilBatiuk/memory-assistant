@@ -4,7 +4,7 @@ import { Volume2 } from 'lucide-react'
 
 import { Button } from '@/components/ui'
 
-import { UseAudio } from '@/hooks'
+import { playAudio } from '@/helpers'
 
 import { ActionDropDown } from './components/action-drop-down/action-drop-down'
 
@@ -13,18 +13,15 @@ interface DictionaryProps {
 }
 
 export const WordItem: React.FC<DictionaryProps> = ({ word }: DictionaryProps) => {
-  const { playAudio, isFetching } = UseAudio({ word: word.word, lang: word.language })
-
   return (
     <div className='relative flex items-center gap-2 border-b py-4'>
       <Button
-        disabled={isFetching}
         variant='ghost'
         size='iconLg'
         className='shrink-0 [&_svg]:size-[1.35rem]'
         aria-label='voice'
         type='button'
-        onClick={playAudio}
+        onClick={() => playAudio({ word: word.word, lang: word.language })}
       >
         <Volume2 />
       </Button>

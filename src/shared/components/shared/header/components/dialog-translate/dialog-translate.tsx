@@ -48,7 +48,7 @@ export const DialogTranslate: React.FC<DialogTranslateProps> = ({
   const { data: translation, isFetching } = useQuery({
     queryKey: ['translate', from, to, debouncedSearch],
     queryFn: () =>
-      translationApi.getTranslation({
+      translationApi.getTranslationText({
         search,
         from,
         to,

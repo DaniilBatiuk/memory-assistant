@@ -39,22 +39,13 @@ model Dictionary {
 }
 
 model Word {
-  id           String    @id @default(cuid())
+  id           String @id @default(cuid())
   word         String
   translations String
-  language     Languages
+  language     String
 
   Dictionary   Dictionary @relation(fields: [dictionaryId], references: [id])
   dictionaryId String
 
   createdAt DateTime @default(now())
-}
-
-enum Languages {
-  de
-  en
-  es
-  fr
-  it
-  ru
 }
