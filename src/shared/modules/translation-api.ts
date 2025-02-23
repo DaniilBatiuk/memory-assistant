@@ -1,10 +1,29 @@
-import { LanguageCode } from '@/constants'
+import { LANGUAGE_CODE } from '@/constants'
 
 import { errorCatch } from '@/helpers'
 
 import { reverso } from '../lib/reverso'
 
 export const translationApi = {
+  getTranslationText: errorCatch(
+    async ({
+      search,
+      from,
+      to,
+    }: {
+      search: string
+      from: string
+      to: string
+    }): Promise<ITranslationText> => {
+      const response: ITranslationText = await reverso.getTranslation(search, from, to)
+
+      if (!response.ok) {
+        throw new Error('Something went wrong')
+      }
+
+      return response
+    },
+  ),
   getTranslation: errorCatch(
     async ({
       search,
@@ -14,10 +33,12 @@ export const translationApi = {
       search: string
       from: string
       to: string
-    }): Promise<ITranslation> => {
-      const response: ITranslation = await reverso.getTranslation(search, from, to)
+    }): Promise<ITranslationDto> => {
+      const response = (await fetch(
+        `${process.env.NEXT_PUBLIC_YANDEX_API_URL}/lookup?key=${process.env.NEXT_PUBLIC_YANDEX_API_KEY}&lang=${LANGUAGE_CODE[from]}-${LANGUAGE_CODE[to]}&text=${search}`,
+      ).then(res => res.json())) as ITranslationDto
 
-      if (!response.ok) {
+      if (response.code !== 200) {
         throw new Error('Something went wrong')
       }
 
@@ -36,40 +57,10 @@ export const translationApi = {
     }): Promise<IContext> => {
       const response: IContext = await reverso.getContext(search, from, to)
 
-      console.log('CONTEXT', response)
       if (!response.ok) {
         throw new Error('Something went wrong')
       }
 
-      return response
-    },
-  ),
-  getSuggestion: errorCatch(
-    async (
-      { signal }: { signal: AbortSignal },
-      {
-        search,
-        from,
-        to,
-      }: {
-        search: string
-        from: keyof typeof LanguageCode
-        to: keyof typeof LanguageCode
-      },
-    ): Promise<string[]> => {
-      const response = await fetch('/api/suggestion', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        signal,
-        body: JSON.stringify({
-          search: search,
-          source_lang: LanguageCode[from],
-          target_lang: LanguageCode[to],
-        }),
-      }).then(res => res.json())
-      console.log('getSuggestion', response)
       return response
     },
   ),

@@ -2,7 +2,7 @@
 
 import { headers } from 'next/headers'
 
-import { LINKS, LanguageCode } from '@/constants'
+import { LANGUAGE_CODE, LINKS } from '@/constants'
 
 import { getUserSession } from '@/helpers'
 
@@ -15,7 +15,7 @@ export const getUserOrRedirect = async (): Promise<IUser> => {
 
   if (!user) {
     redirect({ href: LINKS.Home, locale })
-    throw new Error(locale === LanguageCode.English ? 'User not found' : 'Користувача не знайдено')
+    throw new Error(locale === LANGUAGE_CODE.English ? 'User not found' : 'Користувача не знайдено')
   }
 
   return user

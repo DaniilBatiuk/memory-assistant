@@ -1,23 +1,23 @@
-import { getTranslations } from 'next-intl/server'
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query'
 
-import { Button } from '@/components/ui'
+import { getDictionaryQueryOptions, getQueryClient } from '@/lib'
 
+import { DictionaryControl } from './components/dictionary-control/dictionary-control'
 import { WordsList } from './components/words-list/words-list'
 
-export default async function Dictionary() {
-  const t = await getTranslations('Dictionary')
+export default async function Dictionary({ params }: { params: Promise<{ id: string }> }) {
+  const id = (await params).id
+
+  const queryClient = getQueryClient()
+
+  queryClient.prefetchQuery(getDictionaryQueryOptions(id))
 
   return (
     <div className='container adaptive-margin-top-20-60'>
-      <div className='flex items-center justify-between adaptive-margin-bottom-20-30'>
-        <div className='flex items-end gap-3'>
-          <h1 className='font-bold adaptive-font-size-30-40'>{t('title')}</h1>
-          <p className='text-foreground/55 adaptive-font-size-14-16'>1243 word</p>
-        </div>
-        <Button>{t('quiz')}</Button>
-      </div>
-      <WordsList />
-      {/* <EmptyDictionary /> */}
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <DictionaryControl dictionaryId={id} />
+        <WordsList dictionaryId={id} />
+      </HydrationBoundary>
     </div>
   )
 }

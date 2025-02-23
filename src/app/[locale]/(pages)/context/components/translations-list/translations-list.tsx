@@ -2,12 +2,15 @@
 
 import { DndContext, rectIntersection } from '@dnd-kit/core'
 import { SortableContext, arrayMove, rectSwappingStrategy } from '@dnd-kit/sortable'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useShallow } from 'zustand/shallow'
+
+import { useContextStore } from '@/store'
 
 import { TranslationItem } from './components/translation-item/translation-item'
 
 interface TranslationsListProps {
-  translations: string[]
+  translations: Definition[]
   title: string
 }
 
@@ -15,7 +18,25 @@ export const TranslationsList: React.FC<TranslationsListProps> = ({
   translations,
   title,
 }: TranslationsListProps) => {
-  const [items, setItems] = useState<string[]>(translations)
+  const [items, setItems] = useState<Translation[]>(() =>
+    translations.map(translation => translation.tr).flat(),
+  )
+
+  const { setTranslations } = useContextStore(
+    useShallow(state => ({
+      setTranslations: state.setTranslations,
+    })),
+  )
+
+  useEffect(() => {
+    setItems(translations.map(translation => translation.tr).flat())
+    setTranslations(
+      translations
+        .map(translation => translation.tr.map(translation => translation.text))
+        .flat()
+        .join(', '),
+    )
+  }, [translations, setTranslations])
 
   const handleDragEnd = (event: any) => {
     const { active, over } = event
@@ -34,10 +55,13 @@ export const TranslationsList: React.FC<TranslationsListProps> = ({
         {title}
       </h2>
       <DndContext collisionDetection={rectIntersection} onDragEnd={handleDragEnd}>
-        <SortableContext items={items} strategy={rectSwappingStrategy}>
+        <SortableContext
+          items={items.map(translation => translation.text)}
+          strategy={rectSwappingStrategy}
+        >
           <div className='flex flex-wrap gap-2'>
             {items.map(translation => (
-              <TranslationItem key={translation} translation={translation} />
+              <TranslationItem key={translation.text} translation={translation} />
             ))}
           </div>
         </SortableContext>

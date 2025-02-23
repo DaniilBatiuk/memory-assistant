@@ -16,7 +16,7 @@ export const DictionaryItem: React.FC<DictionaryItemProps> = ({
   return (
     <div className='relative flex flex-col gap-[5px] border-b py-4 pr-11'>
       <Link
-        href={LINKS.Dictionary + '/1'}
+        href={LINKS.Dictionary + '/' + dictionary.id}
         className='truncate font-semibold underline-offset-2 adaptive-font-size-20-24 hover:underline'
       >
         {dictionary.title}

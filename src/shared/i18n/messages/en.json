@@ -126,8 +126,10 @@
     "placeholder": "Search for a word, an expression",
     "translations": "Translations",
     "examples": "Examples",
+    "noDictionariesText": "You don't have any dictionaries yet.",
     "notFound": "not found in Context.",
     "tooltip": "Add to dictionary",
+    "loading": "Loading...",
     "myDictionaries": "My dictionaries",
     "error": {
       "title": "Something went wrong.",
@@ -156,6 +158,7 @@
         "required": "The description field is required"
       }
     },
+
     "update": "Update",
     "delete": "Delete"
   },
@@ -166,6 +169,18 @@
     "updatePlaceholder": {
       "word": "Word",
       "translations": "Translations"
+    },
+    "updateWordErrors": {
+      "word": {
+        "min": "The word must contain at least 2 characters",
+        "max": "The word must contain no more than 100 characters",
+        "required": "The word field is required"
+      },
+      "translations": {
+        "min": "The translations must contain at least 5 characters",
+        "max": "The translations must contain no more than 500 characters",
+        "required": "The translations field is required"
+      }
     },
     "update": "Update",
     "delete": "Delete",
