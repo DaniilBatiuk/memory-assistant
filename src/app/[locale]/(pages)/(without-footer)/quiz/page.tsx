@@ -10,13 +10,17 @@ type SearchParams = Promise<{
 
 export default async function Quiz({ searchParams }: { searchParams: SearchParams }) {
   const { type, quantity, dictionaryId } = await searchParams
-  const { dictionary } = await checkData({ type, quantity, dictionaryId })
+  const { dictionary, filteredDictionary, decodedType } = await checkData({
+    type,
+    quantity,
+    dictionaryId,
+  })
 
-  const shakenWords: IShakenWord[] = createShakenWords(dictionary)
+  const shakenWords: IShakenWord[] = createShakenWords(filteredDictionary)
 
   return (
     <section className='container relative flex-auto adaptive-margin-top-40-60'>
-      <Step shakenWords={shakenWords} dictionaryId={dictionary.id} />
+      <Step shakenWords={shakenWords} dictionaryId={dictionary.id} type={decodedType} />
     </section>
   )
 }

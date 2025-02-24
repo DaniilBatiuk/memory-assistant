@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Star } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
+import { useShallow } from 'zustand/shallow'
 
 import {
   Button,
@@ -12,6 +13,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui'
+
+import { useContextStore } from '@/store'
 
 import { getDictionariesQueryOptions } from '@/lib'
 
@@ -34,11 +37,19 @@ export const AddToDictionary: React.FC<AddToDictionaryProps> = ({
     enabled: !!session?.user.id,
   })
 
+  const { translations } = useContextStore(
+    useShallow(state => ({
+      translations: state.translations,
+    })),
+  )
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          disabled={!session?.user.id || !!!searchFromParam || !!!fromFromParam}
+          disabled={
+            !session?.user.id || !!!searchFromParam || !!!fromFromParam || translations.length === 0
+          }
           variant='outline'
           size='iconLg'
           className='!ring-0 [&_svg]:size-[1.35rem]'

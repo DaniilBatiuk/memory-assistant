@@ -25,6 +25,7 @@ export const createShakenWords = (dictionary: IDictionary) => {
     return {
       id: wordObj.id,
       word: wordObj.word,
+      language: wordObj.language,
       variants,
     }
   })

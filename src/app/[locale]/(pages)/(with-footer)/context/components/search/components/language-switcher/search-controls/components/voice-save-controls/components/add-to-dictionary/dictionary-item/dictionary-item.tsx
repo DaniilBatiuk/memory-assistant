@@ -34,7 +34,7 @@ export const DictionaryItem: React.FC<DictionaryItemProps> = ({
       className='cursor-pointer truncate'
       onClick={() =>
         addWord({
-          word: searchFromParam,
+          word: searchFromParam.trim().toLowerCase(),
           dictionaryId: dictionary.id,
           translations: translations,
           language: fromFromParam,

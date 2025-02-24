@@ -65,6 +65,7 @@ type IShakenWord = {
   id: string
   word: string
   variants: IVariant[]
+  language: string
 }
 
 type IVariant = {

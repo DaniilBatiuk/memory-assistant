@@ -56,7 +56,7 @@ export const QuizTypeDialog: React.FC<QuizTypeDialogProps> = ({
           <button
             className='rounded-md p-[10px] text-left hover:bg-foreground/5'
             onClick={() => {
-              setType(QUIZ_OPTIONS[3])
+              setType(QUIZ_OPTIONS[2])
               setOpenTypeDialog(false)
             }}
           >

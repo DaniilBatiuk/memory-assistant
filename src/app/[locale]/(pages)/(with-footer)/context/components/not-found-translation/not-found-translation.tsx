@@ -2,8 +2,11 @@
 
 import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
+import { useShallow } from 'zustand/shallow'
 
 import { useToast } from '@/hooks'
+
+import { useContextStore } from '@/store'
 
 import { ErrorCatchReturn } from '@/helpers'
 
@@ -19,9 +22,17 @@ export const NotFoundTranslation: React.FC<NotFoundTranslationProps> = ({
   const t = useTranslations('Context')
   const { toast } = useToast()
 
+  const { setTranslations } = useContextStore(
+    useShallow(state => ({
+      setTranslations: state.setTranslations,
+    })),
+  )
+
   useEffect(() => {
     const translationsError =
       translations && !translations.success && translations.error === 'Something went wrong'
+
+    setTranslations('')
 
     if (translationsError) {
       setTimeout(() => {

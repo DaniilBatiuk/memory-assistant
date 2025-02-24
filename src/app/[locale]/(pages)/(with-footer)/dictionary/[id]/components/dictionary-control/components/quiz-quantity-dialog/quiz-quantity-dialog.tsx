@@ -10,6 +10,8 @@ import {
 
 import { LINKS, QUIZ_QUANTITY } from '@/constants'
 
+import { isOlderThan24Hours } from '@/helpers'
+
 import { cn } from '@/lib'
 
 import { Link } from '@/i18n'
@@ -43,19 +45,18 @@ export const QuizQuantityDialog: React.FC<QuizQuantityDialogProps> = ({
               `?dictionaryId=${dictionary.id}&type=${type}&quantity=${QUIZ_QUANTITY[0]}`
             }
             className={cn('relative rounded-md p-[10px] text-left hover:bg-foreground/5', {
-              'pointer-events-none opacity-20': (() => {
-                const createdAt = new Date(dictionary.words[0].createdAt).getTime()
-                const now = Date.now()
-                const diffInHours = (now - createdAt) / (1000 * 60 * 60)
-
-                return diffInHours >= 24
-              })(),
+              'pointer-events-none opacity-20': dictionary.words
+                .slice(0, 4)
+                .some(word => isOlderThan24Hours(word.createdAt)),
             })}
           >
             {t('quizQuantity.addedToday')}
           </Link>
           <Link
-            href={LINKS.Quiz + `?dictionaryId=${dictionary.id}&type=${type}${QUIZ_QUANTITY[1]}`}
+            href={
+              LINKS.Quiz +
+              `?dictionaryId=${dictionary.id}&type=${type}&quantity=${QUIZ_QUANTITY[1]}`
+            }
             className={cn('rounded-md p-[10px] text-left hover:bg-foreground/5', {
               'pointer-events-none opacity-20': dictionary.words.length < 20,
             })}
@@ -63,7 +64,10 @@ export const QuizQuantityDialog: React.FC<QuizQuantityDialogProps> = ({
             {t('quizQuantity.20Words')}
           </Link>
           <Link
-            href={LINKS.Quiz + `?dictionaryId=${dictionary.id}&type=${type}${QUIZ_QUANTITY[2]}`}
+            href={
+              LINKS.Quiz +
+              `?dictionaryId=${dictionary.id}&type=${type}&quantity=${QUIZ_QUANTITY[2]}`
+            }
             className='rounded-md p-[10px] text-left hover:bg-foreground/5'
           >
             {t('quizQuantity.allWords')}

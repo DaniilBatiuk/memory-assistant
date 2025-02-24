@@ -23,7 +23,7 @@ export const RadioGroupBlock: React.FC<RadioGroupProps> = ({
 
   return (
     <div className='absolute left-0 w-full px-[15px] adaptive-bottom-20-60'>
-      <RadioGroup value={selectedValue}>
+      <RadioGroup value={selectedValue} disabled={selectedValue !== 'none'}>
         {variants.map((variant, index) => (
           <div
             key={index}

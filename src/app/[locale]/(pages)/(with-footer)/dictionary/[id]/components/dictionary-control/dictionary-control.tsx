@@ -50,7 +50,7 @@ export const DictionaryControl: React.FC<DictionaryControlProps> = ({
         setOpenTypeDialog={setOpenTypeDialog}
         setType={setType}
       >
-        <Button disabled={dictionary?.words.length === 0}>{t('quiz')}</Button>
+        <Button disabled={(dictionary && dictionary.words.length < 4) ?? true}>{t('quiz')}</Button>
       </QuizTypeDialog>
       {type && dictionary && (
         <QuizQuantityDialog
