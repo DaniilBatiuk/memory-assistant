@@ -33,6 +33,7 @@ export const checkData = async ({
   if (
     !user ||
     !dictionary ||
+    user.id !== dictionary.userId ||
     !QUIZ_OPTIONS.includes(decodedType) ||
     !QUIZ_QUANTITY.includes(decodedQuantity)
   ) {

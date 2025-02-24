@@ -6,3 +6,5 @@ export const LINKS = {
   Dictionary: '/dictionary',
   Quiz: '/quiz',
 }
+
+export const LOCALES = ['en', 'ua']

@@ -1,6 +1,10 @@
+import { metadataFactory } from '@/helpers'
+
 import { Step } from './components/step/step'
 import { checkData } from './helpers/check-data'
 import { createShakenWords } from './helpers/create-shaken-words'
+
+export const metadata = metadataFactory('Quiz')
 
 type SearchParams = Promise<{
   type?: string

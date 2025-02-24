@@ -3,7 +3,11 @@ import Image from 'next/image'
 
 import { ICONS } from '@/constants'
 
+import { metadataFactory } from '@/helpers'
+
 import AboutImage from '@/../public/about-image.webp'
+
+export const metadata = metadataFactory('About')
 
 export default async function About() {
   const t = await getTranslations('AboutPage')
