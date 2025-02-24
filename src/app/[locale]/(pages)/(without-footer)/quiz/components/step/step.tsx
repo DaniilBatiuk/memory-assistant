@@ -45,7 +45,7 @@ export const Step: React.FC<StepProps> = ({ shakenWords, dictionaryId, type }: S
               <Button
                 variant='outline'
                 size='iconExtraLg'
-                className='mx-auto mb-2 [&_svg]:size-[1.7rem]'
+                className='mx-auto [&_svg]:size-[1.7rem]'
                 aria-label='voice'
                 type='button'
                 onClick={() =>
@@ -62,7 +62,7 @@ export const Step: React.FC<StepProps> = ({ shakenWords, dictionaryId, type }: S
                 {shakenWordsArray[step].word}
               </h1>
             )}
-            <p className='text-center text-foreground/55 adaptive-font-size-16-18'>
+            <p className='mt-2 text-center text-foreground/55 adaptive-font-size-16-18'>
               {t('subtitle')}
             </p>
           </div>
