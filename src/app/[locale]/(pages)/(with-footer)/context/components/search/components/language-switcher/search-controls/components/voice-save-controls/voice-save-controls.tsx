@@ -5,6 +5,8 @@ import { Button } from '@/components/ui'
 
 import { playAudio } from '@/helpers'
 
+import { cn } from '@/lib'
+
 import { AddToDictionary } from './components/add-to-dictionary/add-to-dictionary'
 
 export const VoiceSaveControls: React.FC = () => {
@@ -14,10 +16,18 @@ export const VoiceSaveControls: React.FC = () => {
 
   return (
     <div className='flex items-center justify-between gap-3 max-[510px]:w-full'>
-      <h3 className='truncate text-2xl font-semibold text-border-accent min-[510px]:hidden'>
+      <h3
+        className={cn('truncate text-2xl font-semibold text-border-accent min-[511px]:hidden', {
+          hidden: !!!searchFromParam,
+        })}
+      >
         {searchFromParam}
       </h3>
-      <div className='flex gap-2'>
+      <div
+        className={cn('flex gap-2', {
+          'max-[510px]:hidden': !!!searchFromParam,
+        })}
+      >
         <Button
           disabled={!!!searchFromParam || !!!fromFromParam}
           variant='outline'
