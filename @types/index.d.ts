@@ -60,3 +60,14 @@ type IWordDto = {
 }
 
 type IWordCreate = Omit<IWordDto, 'createdAt' | 'id'>
+
+type IShakenWord = {
+  id: string
+  word: string
+  variants: IVariant[]
+}
+
+type IVariant = {
+  variant: string
+  isRight: boolean
+}

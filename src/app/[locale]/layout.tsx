@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
-import { Footer, Header, MainWrapper, QueryWrapper } from '@/components/shared'
+import { Header, MainWrapper, QueryWrapper } from '@/components/shared'
 
 import { Locale, routing } from '@/i18n'
 
@@ -40,8 +40,7 @@ export default async function LocaleLayout({
         <MainWrapper>
           <QueryWrapper>
             <Header />
-            <main className='flex-auto'>{children}</main>
-            <Footer />
+            {children}
           </QueryWrapper>
         </MainWrapper>
       </body>

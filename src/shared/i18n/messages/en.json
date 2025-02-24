@@ -166,6 +166,19 @@
     "title": "Dictionary",
     "noDictionaryText": "You don't have any words in your dictionary yet.",
     "quiz": "Quiz",
+    "word": "words",
+    "quizOption": {
+      "title": "Select quiz option",
+      "translationSelect": "Translation select",
+      "translationSelectReverse": "Translation select reverse",
+      "audioPerception": "Audio playback"
+    },
+    "quizQuantity": {
+      "title": "Select the number of words",
+      "addedToday": "Added today",
+      "20Words": "Last 20 words",
+      "allWords": "All words"
+    },
     "updatePlaceholder": {
       "word": "Word",
       "translations": "Translations"
@@ -185,5 +198,12 @@
     "update": "Update",
     "delete": "Delete",
     "dragToTop": "Drag to top"
+  },
+  "Quiz": {
+    "subtitle": "Select the correct translation",
+    "continue": "Continue",
+    "descriptionGoBack": "You answered all questions correctly, now you can go back to the dictionary",
+    "descriptionContinue": "You answered some questions incorrectly, now you can pass the test only on those words that you answered wrong",
+    "back": "To the dictionary"
   }
 }

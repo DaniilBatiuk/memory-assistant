@@ -15,7 +15,7 @@ import {
 
 import { getDictionariesQueryOptions } from '@/lib'
 
-import { DictionaryItem } from './components/dictionary-item/dictionary-item'
+import { DictionaryItem } from './dictionary-item/dictionary-item'
 
 interface AddToDictionaryProps {
   searchFromParam: string | null
