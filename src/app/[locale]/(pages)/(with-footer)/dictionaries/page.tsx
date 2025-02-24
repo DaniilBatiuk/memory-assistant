@@ -6,7 +6,7 @@ import { Button } from '@/components/ui'
 
 import { LINKS } from '@/constants'
 
-import { getUserSession } from '@/helpers'
+import { getUserSession, metadataFactory } from '@/helpers'
 
 import { getDictionariesQueryOptions, getQueryClient } from '@/lib'
 
@@ -14,6 +14,8 @@ import { redirect } from '@/i18n'
 
 import { CreateDictionaryDialog } from './components/create-dictionary-dialog/create-dictionary-dialog'
 import { DictionaryList } from './components/dictionary-list/dictionary-list'
+
+export const metadata = metadataFactory('Dictionaries')
 
 export default async function Dictionaries() {
   const t = await getTranslations('Dictionaries')

@@ -1,11 +1,13 @@
 import { getTranslations } from 'next-intl/server'
 
-import { isSuccessResponse } from '@/helpers'
+import { isSuccessResponse, metadataFactory } from '@/helpers'
 
 import { NotFoundTranslation } from './components/not-found-translation/not-found-translation'
 import { Search } from './components/search/search'
 import { TranslationsList } from './components/translations-list/translations-list'
 import { getData } from './helpers/get-data'
+
+export const metadata = metadataFactory('Context')
 
 type SearchParams = Promise<{
   search?: string

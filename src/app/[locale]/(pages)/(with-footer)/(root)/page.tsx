@@ -1,7 +1,11 @@
+import { metadataFactory } from '@/helpers'
+
 import { FeatureDictionary } from './components/feature-dictionary/feature-dictionary'
 import { FeatureSection } from './components/feature-section/feature-section'
 import { GetInTouch } from './components/get-in-touch/get-in-touch'
 import { HeroSection } from './components/hero-section/hero-section'
+
+export const metadata = metadataFactory('Home')
 
 export default async function Home() {
   return (
