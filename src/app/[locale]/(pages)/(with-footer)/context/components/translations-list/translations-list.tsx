@@ -42,8 +42,13 @@ export const TranslationsList: React.FC<TranslationsListProps> = ({
     const { active, over } = event
     if (active.id !== over.id) {
       setItems(items => {
-        const oldIndex = items.indexOf(active.id)
-        const newIndex = items.indexOf(over.id)
+        const oldIndex = items.findIndex(item => item.text === active.id)
+        const newIndex = items.findIndex(item => item.text === over.id)
+        setTranslations(
+          arrayMove(items, oldIndex, newIndex)
+            .map(item => item.text)
+            .join(', '),
+        )
         return arrayMove(items, oldIndex, newIndex)
       })
     }

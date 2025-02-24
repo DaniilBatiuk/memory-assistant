@@ -29,7 +29,6 @@ export const QuizQuantityDialog: React.FC<QuizQuantityDialogProps> = ({
 }: QuizQuantityDialogProps) => {
   const t = useTranslations('Dictionary')
 
-  console.log('dictionary', dictionary.words[0])
   return (
     <Dialog open={openQuantityDialog} onOpenChange={setOpenQuantityDialog}>
       <DialogContent className='max-w-[450px]'>

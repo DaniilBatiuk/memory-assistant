@@ -19,7 +19,6 @@ export const Step: React.FC<StepProps> = ({ shakenWords, dictionaryId }: StepPro
 
   const t = useTranslations('Quiz')
 
-  console.log('result', result)
   return (
     <>
       {step !== shakenWordsArray.length ? (
