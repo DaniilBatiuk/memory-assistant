@@ -1,11 +1,10 @@
 import { getTranslations } from 'next-intl/server'
+import { Suspense } from 'react'
 
-import { isSuccessResponse, metadataFactory } from '@/helpers'
+import { metadataFactory } from '@/helpers'
 
-import { NotFoundTranslation } from './components/not-found-translation/not-found-translation'
-import { Search } from './components/search/search'
-import { TranslationsList } from './components/translations-list/translations-list'
-import { getData } from './helpers/get-data'
+import { Content } from './components/content/content'
+import { ContextSkeleton } from './components/context-skeleton/context-skeleton'
 
 export const metadata = metadataFactory('Context')
 
@@ -18,8 +17,6 @@ type SearchParams = Promise<{
 export default async function Context({ searchParams }: { searchParams: SearchParams }) {
   const { search, from, to } = await searchParams
 
-  const translations = await getData({ search, from, to })
-
   const t = await getTranslations('Context')
 
   return (
@@ -30,15 +27,10 @@ export default async function Context({ searchParams }: { searchParams: SearchPa
         </h1>
         <p className='text-center text-foreground/55 adaptive-font-size-16-18'>{t('subtitle')}</p>
       </div>
-      <Search />
-      {isSuccessResponse(translations) && translations.data.def.length > 0 ? (
-        <TranslationsList title={t('translations')} translations={translations.data.def} />
-      ) : (
-        <NotFoundTranslation
-          textToTranslate={search + ' ' + t('notFound')}
-          translations={translations}
-        />
-      )}
+
+      <Suspense fallback={<ContextSkeleton />}>
+        <Content search={search} from={from} to={to} />
+      </Suspense>
     </div>
   )
 }
