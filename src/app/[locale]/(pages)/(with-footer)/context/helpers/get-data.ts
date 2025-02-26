@@ -16,7 +16,7 @@ const uniqueTranslations = (translations: ITranslationDto): ITranslationDto => {
           return true
         }),
       }))
-      .filter(definition => definition.tr.length > 0), // Убираем пустые `def`
+      .filter(definition => definition.tr.length > 0),
   }
 }
 

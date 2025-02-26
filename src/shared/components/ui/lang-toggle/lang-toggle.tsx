@@ -7,7 +7,7 @@ import { ICONS } from '@/constants'
 
 import { usePathname, useRouter } from '@/i18n'
 
-import { Button } from './button'
+import { Button } from '../button/button'
 
 export function LangToggle() {
   const locale = useLocale()

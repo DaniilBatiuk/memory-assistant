@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from './select'
+} from '../select/select'
 
 interface SelectLanguageProps {
   value: string
@@ -30,7 +30,7 @@ export const SelectLanguage: React.FC<SelectLanguageProps> = ({
       value={value}
       name={name}
     >
-      <SelectTrigger className='w-[140px]'>
+      <SelectTrigger className='w-[140px]' aria-label='languages'>
         <SelectValue placeholder='Select a language' />
       </SelectTrigger>
       <SelectContent>

@@ -49,6 +49,7 @@ export const LanguageSwitcher: React.FC = () => {
       <Button
         variant='ghost'
         size='icon'
+        aria-label='switch languages'
         className='[&_svg]:size-[1.5rem]'
         onClick={switchLanguages}
         type='button'
