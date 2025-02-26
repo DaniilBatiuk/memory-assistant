@@ -202,6 +202,9 @@
   "Quiz": {
     "subtitle": "Select the correct translation",
     "continue": "Continue",
+    "moveWords": "Move words up",
+    "toastTitle": "Moved up",
+    "toastDescription": "Incorrect words moved up in dictionary",
     "descriptionGoBack": "You answered all questions correctly, now you can go back to the dictionary",
     "descriptionContinue": "You answered some questions incorrectly, now you can pass the test only on those words that you answered wrong",
     "back": "To the dictionary"
