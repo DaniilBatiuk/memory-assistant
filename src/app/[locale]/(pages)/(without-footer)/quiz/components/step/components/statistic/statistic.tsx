@@ -5,6 +5,8 @@ import { Button } from '@/components/ui'
 
 import { LINKS } from '@/constants'
 
+import { useToast, useWordUpdateCreatedAt } from '@/hooks'
+
 import { Link } from '@/i18n'
 
 interface StatisticProps {
@@ -28,11 +30,31 @@ export const Statistic: React.FC<StatisticProps> = ({
 
   const resultStats = result.reduce((acc, cur) => acc + (cur ? 1 : 0), 0)
 
+  const { toast } = useToast()
+  const { mutate: updateWordCreatedAt, isPending: updateWordCreatedAtIsPending } =
+    useWordUpdateCreatedAt(dictionaryId)
+
   const clickContinue = () => {
     setStep(0)
     setResult([])
     setShakenWords(shakenWords.filter((_, index) => !result[index]))
   }
+
+  const clickMoveWordsUp = async () => {
+    const promises = shakenWords
+      .map((word, index) => !result[index] && updateWordCreatedAt(word.id))
+      .filter(Boolean)
+
+    await Promise.all(promises)
+
+    setTimeout(() => {
+      toast({
+        title: t('toastTitle'),
+        description: t('toastDescription'),
+      })
+    }, 0)
+  }
+
   return (
     <div>
       <h1 className='text-center font-bold adaptive-font-size-30-40 adaptive-margin-bottom-10-15'>
@@ -41,14 +63,21 @@ export const Statistic: React.FC<StatisticProps> = ({
       <p className='text-center text-foreground/55 adaptive-font-size-16-18 adaptive-margin-bottom-20-30'>
         {resultStats < shakenWords.length ? t('descriptionContinue') : t('descriptionGoBack')}
       </p>
-      <div className='flex items-center justify-center gap-9'>
+      <div className='flex flex-wrap items-center justify-center gap-3'>
         {resultStats < shakenWords.length && (
-          <Button size={'md'} onClick={clickContinue}>
-            {t('continue')}
-          </Button>
+          <>
+            <Button size={'md'} onClick={clickContinue}>
+              {t('continue')}
+            </Button>
+            <Button size={'md'} onClick={clickMoveWordsUp} disabled={updateWordCreatedAtIsPending}>
+              {t('moveWords')}
+            </Button>
+          </>
         )}
         <Link href={LINKS.Dictionary + '/' + dictionaryId} className='h-full'>
-          <Button size={'md'}>{t('back')}</Button>
+          <Button size={'md'} variant={'outline'}>
+            {t('back')}
+          </Button>
         </Link>
       </div>
     </div>

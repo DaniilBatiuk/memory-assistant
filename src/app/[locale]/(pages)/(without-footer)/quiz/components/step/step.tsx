@@ -25,6 +25,7 @@ export const Step: React.FC<StepProps> = ({ shakenWords, dictionaryId, type }: S
   const [step, setStep] = useState(0)
   const [result, setResult] = useState<boolean[]>([])
 
+  console.log('shakenWordsArray', shakenWordsArray)
   const t = useTranslations('Quiz')
 
   useEffect(() => {
