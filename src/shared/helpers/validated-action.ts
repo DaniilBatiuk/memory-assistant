@@ -1,4 +1,3 @@
- 
 import { z } from 'zod'
 
 export type ActionState = {
@@ -18,7 +17,7 @@ export function validatedAction<S extends () => Promise<z.ZodType<any, any>>, T>
   action: ValidatedActionFunction<Awaited<ReturnType<S>>, T>,
 ) {
   return async (prevState: ActionState, formData: FormData): Promise<T> => {
-    const schema = await schemaFactory() // Дожидаемся схему
+    const schema = await schemaFactory()
     const result = schema.safeParse(Object.fromEntries(formData))
 
     if (!result.success) {
