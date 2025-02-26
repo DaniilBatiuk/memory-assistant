@@ -3,7 +3,7 @@ import { Mail } from 'lucide-react'
 
 import { Button } from './button'
 
-const meta: Meta<typeof Button> = {
+const meta = {
   title: 'ui/Button',
   component: Button,
   tags: ['autodocs'],
@@ -29,95 +29,63 @@ const meta: Meta<typeof Button> = {
         },
       },
     },
-    disabled: {
-      control: 'boolean',
-      table: {
-        type: {
-          summary: 'boolean',
-        },
-      },
-    },
   },
   args: {
     children: 'Button',
+    disabled: false,
   },
-}
+} satisfies Meta<typeof Button>
 
 export default meta
 type Story = StoryObj<typeof Button>
 
-export const Default: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: 'This is the default button with a basic style.',
-      },
-    },
-  },
-}
+/**
+ * A default button with a basic style.
+ */
+export const Default: Story = {}
 
+/**
+ * A button is used for dangerous actions, such as deleting data.
+ */
 export const Destructive: Story = {
   args: {
     variant: 'destructive',
   },
-  parameters: {
-    docs: {
-      description: {
-        story: 'This button is used for dangerous actions, such as deleting data.',
-      },
-    },
-  },
 }
 
+/**
+ * An outlined button suitable for secondary actions.
+ */
 export const Outline: Story = {
   args: {
     variant: 'outline',
   },
-  parameters: {
-    docs: {
-      description: {
-        story: 'An outlined button suitable for secondary actions.',
-      },
-    },
-  },
 }
 
+/**
+ * A secondary button with a less prominent style.
+ */
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
   },
-  parameters: {
-    docs: {
-      description: {
-        story: 'A secondary button with a less prominent style.',
-      },
-    },
-  },
 }
 
+/**
+ * A transparent button, often used for less important actions.
+ */
 export const Ghost: Story = {
   args: {
     variant: 'ghost',
   },
-  parameters: {
-    docs: {
-      description: {
-        story: 'A transparent button, often used for less important actions.',
-      },
-    },
-  },
 }
 
+/**
+ * An icon button designed for actions without a text label.
+ */
 export const IconButton: Story = {
   args: {
     size: 'icon',
     children: <Mail />,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'An icon button designed for actions without a text label.',
-      },
-    },
   },
 }
