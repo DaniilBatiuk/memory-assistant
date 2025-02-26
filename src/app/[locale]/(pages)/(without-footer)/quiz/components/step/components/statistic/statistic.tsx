@@ -1,7 +1,8 @@
+import { ArrowUpFromLine, CircleX, StepForward } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction } from 'react'
 
-import { Button } from '@/components/ui'
+import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui'
 
 import { LINKS } from '@/constants'
 
@@ -47,12 +48,10 @@ export const Statistic: React.FC<StatisticProps> = ({
 
     await Promise.all(promises)
 
-    setTimeout(() => {
-      toast({
-        title: t('toastTitle'),
-        description: t('toastDescription'),
-      })
-    }, 0)
+    toast({
+      title: t('toastTitle'),
+      description: t('toastDescription'),
+    })
   }
 
   return (
@@ -66,19 +65,57 @@ export const Statistic: React.FC<StatisticProps> = ({
       <div className='flex flex-wrap items-center justify-center gap-3'>
         {resultStats < shakenWords.length && (
           <>
-            <Button size={'md'} onClick={clickContinue}>
-              {t('continue')}
-            </Button>
-            <Button size={'md'} onClick={clickMoveWordsUp} disabled={updateWordCreatedAtIsPending}>
-              {t('moveWords')}
-            </Button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    onClick={clickContinue}
+                    size={'iconLg'}
+                    aria-label='continue'
+                    className='[&_svg]:size-[1.5rem]'
+                  >
+                    <StepForward />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{t('tooltips.continue')}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    size={'iconLg'}
+                    aria-label='move words'
+                    onClick={clickMoveWordsUp}
+                    disabled={updateWordCreatedAtIsPending}
+                    className='[&_svg]:size-[1.5rem]'
+                  >
+                    <ArrowUpFromLine />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{t('tooltips.moveWords')}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </>
         )}
-        <Link href={LINKS.Dictionary + '/' + dictionaryId} className='h-full'>
-          <Button size={'md'} variant={'outline'}>
-            {t('back')}
-          </Button>
-        </Link>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link href={LINKS.Dictionary + '/' + dictionaryId} className='h-full'>
+                <Button size={'iconLg'} aria-label='back' className='[&_svg]:size-[1.5rem]'>
+                  <CircleX />
+                </Button>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{t('tooltips.back')}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
     </div>
   )
