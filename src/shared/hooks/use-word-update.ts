@@ -35,23 +35,6 @@ export const useWordUpdate = (dictionaryId: string) => {
       return { previousDictionary, updateWord }
     },
 
-    // onSuccess: (updateWord, _, context) => {
-    //     if (context) {
-    //       queryClient.setQueryData<IDictionary>(
-    //         getDictionaryQueryOptions(dictionaryId).queryKey,
-    //         oldDictionary => {
-    //           if (!oldDictionary) return oldDictionary
-    //           return {
-    //             ...oldDictionary,
-    //             words: oldDictionary.words.map(word =>
-    //               word.id === updateWord.id ? updateWord : word,
-    //             ),
-    //           }
-    //         },
-    //       )
-    //     }
-    // },
-
     onError: (_, __, context) => {
       if (context) {
         queryClient.setQueryData(

@@ -15,7 +15,16 @@
     "context": "Context",
     "demoDictionary": "Demo dictionary",
     "subscribe": "Subscribe",
-    "privacyPolicy": "© 2025 Memory Assistant. All rights reserved."
+    "privacyPolicy": "© 2025 Memory Assistant. All rights reserved.",
+    "subscribeErrors": {
+      "title": "Subscribe error",
+      "correct": "The E-mail in wrong format",
+      "required": "The E-main field is required"
+    },
+    "subscribeSuccess": {
+      "subtitle": "Successfully subscribed",
+      "description": "You have successfully subscribed to the newsletter."
+    }
   },
   "HomePage": {
     "title": "Unlock Your Language Learning Potential Today",

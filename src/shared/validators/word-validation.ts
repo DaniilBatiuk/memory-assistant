@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const WordScheme = (t: (key: string) => string) => {
+export const wordScheme = (t: (key: string) => string) => {
   return z.object({
     id: z.string().cuid(),
     word: z
@@ -16,4 +16,4 @@ export const WordScheme = (t: (key: string) => string) => {
   })
 }
 
-export type UpdateWord = z.infer<Awaited<ReturnType<typeof WordScheme>>>
+export type UpdateWord = z.infer<Awaited<ReturnType<typeof wordScheme>>>

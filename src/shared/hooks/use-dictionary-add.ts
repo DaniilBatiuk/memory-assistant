@@ -28,16 +28,6 @@ export const useDictionaryAdd = (userId: string) => {
       return { previousDictionaries, tempId }
     },
 
-    // onSuccess: (savedDictionary, _, context) => {
-    //   if (context?.tempId) {
-    //     queryClient.setQueryData<IDictionary[]>(
-    //       getDictionariesQueryOptions(userId).queryKey,
-    //       (oldDictionaries = []) =>
-    //         oldDictionaries.map(dict => (dict.id === context.tempId ? savedDictionary : dict)),
-    //     )
-    //   }
-    // },
-
     onError: (_, __, context) => {
       if (context) {
         queryClient.setQueryData(

@@ -15,7 +15,16 @@
     "context": "Контекст",
     "demoDictionary": "Демо-словник",
     "subscribe": "Підписатися",
-    "privacyPolicy": "© 2025 Memory Assistant. Всі права захищені."
+    "privacyPolicy": "© 2025 Memory Assistant. Всі права захищені.",
+    "subscribeErrors": {
+      "title": "Помилка підписки",
+      "correct": "E-mail має неправильний формат",
+      "required": "Поле E-mail є обов'язковим"
+    },
+    "subscribeSuccess": {
+      "subtitle": "Успішна підписка",
+      "description": "Ви успішно підписалися на розсилку."
+    }
   },
   "HomePage": {
     "title": "Розкрийте свій мовний потенціал вже сьогодні",

@@ -19,7 +19,7 @@ import {
 
 import { useWordUpdate } from '@/hooks'
 
-import { UpdateWord, WordScheme } from '@/validators'
+import { UpdateWord, wordScheme } from '@/validators'
 
 interface UpdateWordDialogProps {
   openUpdateMenu: boolean
@@ -39,7 +39,7 @@ export const UpdateWordDialog: React.FC<UpdateWordDialogProps> = ({
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<UpdateWord>({
-    resolver: zodResolver(WordScheme(t)),
+    resolver: zodResolver(wordScheme(t)),
     defaultValues: {
       id: word.id,
       word: word.word,
