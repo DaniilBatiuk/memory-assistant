@@ -84,9 +84,6 @@
   .container {
     @apply max-w-[1440px];
   }
-  .container-small {
-    @apply mx-auto max-w-[1100px] px-[15px];
-  }
 }
 
 @layer utilities {
@@ -101,8 +98,12 @@
   .half-width {
     width: calc(50% - 30px);
   }
+
   .scrollbar-thin {
     scrollbar-width: thin;
+  }
+  .full-height-without-header {
+    height: calc(100svh - 65px);
   }
 }
 

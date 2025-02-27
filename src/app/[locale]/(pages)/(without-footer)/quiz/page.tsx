@@ -23,7 +23,7 @@ export default async function Quiz({ searchParams }: { searchParams: SearchParam
   const shakenWords: IShakenWord[] = createShakenWords(filteredDictionary)
 
   return (
-    <section className='container relative flex-auto adaptive-margin-top-40-60'>
+    <section className='full-height-without-header container relative flex-auto adaptive-padding-top-40-60'>
       <Step shakenWords={shakenWords} dictionaryId={dictionary.id} type={decodedType} />
     </section>
   )
