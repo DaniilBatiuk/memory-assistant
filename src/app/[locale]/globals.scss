@@ -102,9 +102,6 @@
   .scrollbar-thin {
     scrollbar-width: thin;
   }
-  .full-height-without-header {
-    height: calc(100svh - 65px);
-  }
 }
 
 @layer base {

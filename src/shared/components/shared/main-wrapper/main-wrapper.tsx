@@ -7,7 +7,7 @@ export const MainWrapper = async ({ children }: { children: React.ReactNode }) =
   return (
     <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
       <NextIntlClientProvider messages={messages}>
-        <div className='flex min-h-screen flex-col'> {children}</div>
+        <div className='flex min-h-svh flex-col'> {children}</div>
       </NextIntlClientProvider>
     </ThemeProvider>
   )
