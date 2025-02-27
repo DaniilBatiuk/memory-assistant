@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["vitest/globals"],
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -18,7 +19,19 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
+      "@/components/ui": ["./src/shared/components/ui"],
+      "@/components/shared": ["./src/shared/components/shared"],
+      "@/store": ["./src/shared/store"],
+      "@/lib": ["./src/shared/lib"],
+      "@/models": ["./src/shared/modules"],
+      "@/actions": ["./src/shared/actions"],
+      "@/constants": ["./src/shared/constants"],
+      "@/validators": ["./src/shared/validators"],
+      "@/hooks": ["./src/shared/hooks"],
+      "@/helpers": ["./src/shared/helpers"],
+      "@/i18n": ["./src/shared/i18n"],
       "@/*": ["./src/*"]
     }
   },
