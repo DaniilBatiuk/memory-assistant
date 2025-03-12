@@ -1,11 +1,10 @@
 import { HydrationBoundary, dehydrate } from '@tanstack/react-query'
-import { headers } from 'next/headers'
 
-import { getDictionary } from '@/actions'
+import { getDictionary, getUserOrRedirect } from '@/actions'
 
 import { LINKS } from '@/constants'
 
-import { getUserSession, metadataFactory } from '@/helpers'
+import { metadataFactory } from '@/helpers'
 
 import { getDictionaryQueryOptions, getQueryClient, prisma } from '@/lib'
 
@@ -25,12 +24,10 @@ export const metadata = metadataFactory('Dictionary')
 export default async function Dictionary({ params }: { params: Promise<{ id: string }> }) {
   const id = (await params).id
 
-  const user = await getUserSession()
   const dictionary = await getDictionary(id)
+  const { user, locale } = await getUserOrRedirect()
 
-  const locale = (await headers()).get('x-next-intl-locale') || 'en'
-
-  if (!user || !dictionary || user.id !== dictionary.userId) {
+  if (!dictionary || user.id !== dictionary.userId) {
     redirect({ href: LINKS.Home, locale })
     return null
   }

@@ -1,10 +1,8 @@
-import { headers } from 'next/headers'
-
-import { getDictionary } from '@/actions'
+import { getDictionary, getUserOrRedirect } from '@/actions'
 
 import { LINKS, QUIZ_OPTIONS, QUIZ_QUANTITY } from '@/constants'
 
-import { getUserSession, isOlderThan24Hours } from '@/helpers'
+import { isOlderThan24Hours } from '@/helpers'
 
 import { redirect } from '@/i18n'
 
@@ -27,11 +25,9 @@ export const checkData = async ({
   const decodedQuantity = quantity ? decodeURIComponent(quantity) : ''
 
   const dictionary = await getDictionary(dictionaryId ?? '')
-  const user = await getUserSession()
-  const locale = (await headers()).get('x-next-intl-locale') || 'en'
+  const { user, locale } = await getUserOrRedirect()
 
   if (
-    !user ||
     !dictionary ||
     user.id !== dictionary.userId ||
     !QUIZ_OPTIONS.includes(decodedType) ||
