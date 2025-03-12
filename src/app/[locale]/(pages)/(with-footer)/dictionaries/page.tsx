@@ -1,16 +1,13 @@
 import { HydrationBoundary, dehydrate } from '@tanstack/react-query'
 import { getTranslations } from 'next-intl/server'
-import { headers } from 'next/headers'
 
 import { Button } from '@/components/ui'
 
-import { LINKS } from '@/constants'
+import { getUserOrRedirect } from '@/actions'
 
-import { getUserSession, metadataFactory } from '@/helpers'
+import { metadataFactory } from '@/helpers'
 
 import { getDictionariesQueryOptions, getQueryClient } from '@/lib'
-
-import { redirect } from '@/i18n'
 
 import { CreateDictionaryDialog } from './components/create-dictionary-dialog/create-dictionary-dialog'
 import { DictionaryList } from './components/dictionary-list/dictionary-list'
@@ -20,14 +17,7 @@ export const metadata = metadataFactory('Dictionaries')
 export default async function Dictionaries() {
   const t = await getTranslations('Dictionaries')
 
-  const user = await getUserSession()
-
-  const locale = (await headers()).get('x-next-intl-locale') || 'en'
-
-  if (!user) {
-    redirect({ href: LINKS.Home, locale })
-    return null
-  }
+  const { user } = await getUserOrRedirect()
 
   const queryClient = getQueryClient()
 
