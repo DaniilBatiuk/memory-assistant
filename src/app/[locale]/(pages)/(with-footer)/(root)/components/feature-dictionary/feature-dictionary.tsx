@@ -13,7 +13,7 @@ export const FeatureDictionary: React.FC = async () => {
         className='half-width rounded-2xl max-[930px]:w-full lg:rounded-3xl'
         placeholder='blur'
         src={HomeImage2}
-        alt='Home image'
+        alt=''
         priority
         quality={100}
         loading={'eager'}

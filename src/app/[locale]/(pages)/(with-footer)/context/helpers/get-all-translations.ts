@@ -20,7 +20,7 @@ const uniqueTranslations = (translations: ITranslationDto): ITranslationDto => {
   }
 }
 
-export const getData = async ({
+export const getAllTranslations = async ({
   search,
   from,
   to,
