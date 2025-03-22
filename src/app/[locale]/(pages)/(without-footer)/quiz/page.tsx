@@ -1,6 +1,6 @@
 import { metadataFactory } from '@/helpers'
 
-import { Step } from './components/step/step'
+import { Steps } from './components/step/steps'
 import { checkData } from './helpers/check-data'
 import { createShakenWords } from './helpers/create-shaken-words'
 
@@ -24,7 +24,7 @@ export default async function Quiz({ searchParams }: { searchParams: SearchParam
 
   return (
     <main className='container relative flex-auto adaptive-margin-top-40-60'>
-      <Step shakenWords={shakenWords} dictionaryId={dictionary.id} type={decodedType} />
+      <Steps shakenWords={shakenWords} dictionaryId={dictionary.id} type={decodedType} />
     </main>
   )
 }

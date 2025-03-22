@@ -2,7 +2,6 @@
 
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui'
 
@@ -10,6 +9,7 @@ import { getDictionaryQueryOptions } from '@/lib'
 
 import { QuizQuantityDialog } from './components/quiz-quantity-dialog/quiz-quantity-dialog'
 import { QuizTypeDialog } from './components/quiz-type-dialog/quiz-type-dialog'
+import { useQuizInit } from './hooks/use-quiz-init'
 
 interface DictionaryControlProps {
   dictionaryId: string
@@ -21,21 +21,14 @@ export const DictionaryControl: React.FC<DictionaryControlProps> = ({
   const t = useTranslations('Dictionary')
 
   const { data: dictionary } = useSuspenseQuery(getDictionaryQueryOptions(dictionaryId))
-
-  const [type, setType] = useState<string | null>(null)
-  const [openTypeDialog, setOpenTypeDialog] = useState(false)
-  const [openQuantityDialog, setOpenQuantityDialog] = useState(false)
-
-  useEffect(() => {
-    if (type) {
-      setOpenQuantityDialog(true)
-    }
-  }, [type])
-  useEffect(() => {
-    if (!openQuantityDialog && openTypeDialog!) {
-      setType(null)
-    }
-  }, [openQuantityDialog, openTypeDialog])
+  const {
+    type,
+    setType,
+    openTypeDialog,
+    setOpenTypeDialog,
+    openQuantityDialog,
+    setOpenQuantityDialog,
+  } = useQuizInit()
 
   return (
     <div className='flex items-center justify-between adaptive-margin-bottom-20-30'>
