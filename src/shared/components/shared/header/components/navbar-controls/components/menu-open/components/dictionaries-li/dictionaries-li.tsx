@@ -18,7 +18,7 @@ export const DictionariesLi: React.FC<DictionariesLiProps> = ({
 
   const { data: session } = useSession()
 
-  if (!session) return <></>
+  if (!session) return null
 
   return (
     <li className='flex w-full'>

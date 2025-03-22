@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server'
 
 import { isSuccessResponse } from '@/helpers'
 
-import { getData } from '../../helpers/get-data'
+import { getAllTranslations } from '../../helpers/get-all-translations'
 import { NotFoundTranslation } from '../not-found-translation/not-found-translation'
 import { Search } from '../search/search'
 import { TranslationsList } from '../translations-list/translations-list'
@@ -14,8 +14,9 @@ interface ContentProps {
 }
 
 export const Content: React.FC<ContentProps> = async ({ search, from, to }: ContentProps) => {
-  const translations = await getData({ search, from, to })
+  const translations = await getAllTranslations({ search, from, to })
   const t = await getTranslations('Context')
+
   return (
     <>
       <Search />

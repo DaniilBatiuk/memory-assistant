@@ -1,13 +1,10 @@
 'use client'
 
 import { DndContext, rectIntersection } from '@dnd-kit/core'
-import { SortableContext, arrayMove, rectSwappingStrategy } from '@dnd-kit/sortable'
-import { useEffect, useState } from 'react'
-import { useShallow } from 'zustand/shallow'
-
-import { useContextStore } from '@/store'
+import { SortableContext, rectSwappingStrategy } from '@dnd-kit/sortable'
 
 import { TranslationItem } from './components/translation-item/translation-item'
+import { useTranslationsList } from './hooks/use-translations-list'
 
 interface TranslationsListProps {
   translations: Definition[]
@@ -18,41 +15,7 @@ export const TranslationsList: React.FC<TranslationsListProps> = ({
   translations,
   title,
 }: TranslationsListProps) => {
-  const [items, setItems] = useState<Translation[]>(() =>
-    translations.map(translation => translation.tr).flat(),
-  )
-
-  const { setTranslations } = useContextStore(
-    useShallow(state => ({
-      setTranslations: state.setTranslations,
-    })),
-  )
-
-  useEffect(() => {
-    setItems(translations.map(translation => translation.tr).flat())
-    setTranslations(
-      translations
-        .map(translation => translation.tr.map(translation => translation.text))
-        .flat()
-        .join(', '),
-    )
-  }, [translations, setTranslations])
-
-  const handleDragEnd = (event: any) => {
-    const { active, over } = event
-    if (active.id !== over.id) {
-      setItems(items => {
-        const oldIndex = items.findIndex(item => item.text === active.id)
-        const newIndex = items.findIndex(item => item.text === over.id)
-        setTranslations(
-          arrayMove(items, oldIndex, newIndex)
-            .map(item => item.text)
-            .join(', '),
-        )
-        return arrayMove(items, oldIndex, newIndex)
-      })
-    }
-  }
+  const { handleDragEnd, items } = useTranslationsList({ translations })
 
   return (
     <section className='adaptive-margin-top-20-40'>

@@ -25,9 +25,11 @@ export const ActionDropDown: React.FC<ActionDropDownProps> = ({ word }: ActionDr
   const t = useTranslations('Dictionary')
 
   const [openUpdateMenu, setOpenUpdateMenu] = useState(false)
+
   const { mutate: deleteWord, isPending: deleteWordIsPending } = useWordDelete(word.dictionaryId)
   const { mutate: updateWordCreatedAt, isPending: updateWordCreatedAtIsPending } =
     useWordUpdateCreatedAt(word.dictionaryId)
+
   return (
     <>
       <UpdateWordDialog

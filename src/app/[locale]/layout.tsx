@@ -1,8 +1,9 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
-import { Header, MainWrapper, QueryWrapper } from '@/components/shared'
+import { Header, Wrappers } from '@/components/shared'
 
 import { Locale, routing } from '@/i18n'
 
@@ -36,13 +37,15 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script crossOrigin='anonymous' src='//unpkg.com/react-scan/dist/auto.global.js' />
+        {/* rest of your scripts go under */}
+      </head>
       <body className={`${interSans.variable} relative antialiased`}>
-        <MainWrapper>
-          <QueryWrapper>
-            <Header />
-            {children}
-          </QueryWrapper>
-        </MainWrapper>
+        <Wrappers>
+          <Header />
+          {children}
+        </Wrappers>
       </body>
     </html>
   )
