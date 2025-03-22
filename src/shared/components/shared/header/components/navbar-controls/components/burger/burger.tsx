@@ -15,6 +15,7 @@ export const Burger: React.FC = () => {
     setBurgerActive(prev => !prev)
     document.body.classList.toggle('overflow-hidden')
   }
+
   return (
     <>
       <Button

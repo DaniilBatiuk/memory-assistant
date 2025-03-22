@@ -18,6 +18,7 @@ interface BurgerProps {
 
 export const MenuOpen: React.FC<BurgerProps> = ({ burgerActive, closeBurgerMenu }: BurgerProps) => {
   const t = useTranslations('Header')
+
   return (
     <nav
       className={cn(

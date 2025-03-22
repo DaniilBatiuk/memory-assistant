@@ -1,15 +1,9 @@
-'use client'
-
 import { useLocale } from 'next-intl'
 import { useParams } from 'next/navigation'
 
-import { ICONS } from '@/constants'
-
 import { usePathname, useRouter } from '@/i18n'
 
-import { Button } from '../button/button'
-
-export function LangToggle() {
+export const useSelectLang = () => {
   const locale = useLocale()
   const router = useRouter()
 
@@ -24,16 +18,6 @@ export function LangToggle() {
       { locale: locale === 'en' ? 'ua' : 'en' },
     )
   }
-  return (
-    <Button
-      variant='ghost'
-      size='icon'
-      className='[&_svg]:size-[1.1rem]'
-      onClick={onSelectLang}
-      aria-label='lang'
-    >
-      {ICONS.langEn({ className: locale === 'en' ? 'text-foreground' : 'hidden' })}
-      {ICONS.langUa({ className: locale === 'ua' ? 'dark:block text-foreground' : 'hidden' })}
-    </Button>
-  )
+
+  return { onSelectLang, locale }
 }
