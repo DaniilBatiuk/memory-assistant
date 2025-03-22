@@ -13,7 +13,7 @@ import {
 
 import { useDictionaryDelete } from '@/hooks'
 
-import { UpdateDictionaryDialog } from '../../../../../update-dictionary-dialog/update-dictionary-dialog'
+import { UpdateDictionaryDialog } from '../../../update-dictionary-dialog/update-dictionary-dialog'
 
 interface ActionDropDownProps {
   dictionary: IDictionary
@@ -28,6 +28,7 @@ export const ActionDropDown: React.FC<ActionDropDownProps> = ({
 
   const { mutate: deleteDictionary, isPending: deleteDictionaryIsPending } =
     useDictionaryDelete(userId)
+
   const [openUpdateMenu, setOpenUpdateMenu] = useState(false)
 
   return (
@@ -44,7 +45,7 @@ export const ActionDropDown: React.FC<ActionDropDownProps> = ({
             variant='ghost'
             size='icon'
             aria-label='addition func'
-            className='absolute right-0 top-3 !ring-0 [&_svg]:size-[1.3rem]'
+            className='absolute right-0 top-3 [&_svg]:size-[1.3rem]'
           >
             <EllipsisVertical />
           </Button>
