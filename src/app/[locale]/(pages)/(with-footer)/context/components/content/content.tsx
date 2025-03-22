@@ -16,6 +16,7 @@ interface ContentProps {
 export const Content: React.FC<ContentProps> = async ({ search, from, to }: ContentProps) => {
   const translations = await getData({ search, from, to })
   const t = await getTranslations('Context')
+
   return (
     <>
       <Search />
