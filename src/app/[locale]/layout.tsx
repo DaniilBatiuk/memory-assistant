@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-sync-scripts */
+ 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { notFound } from 'next/navigation'
@@ -38,8 +38,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <script crossOrigin='anonymous' src='//unpkg.com/react-scan/dist/auto.global.js' />
-        {/* rest of your scripts go under */}
+        {/* <script crossOrigin='anonymous' src='//unpkg.com/react-scan/dist/auto.global.js' /> */}
       </head>
       <body className={`${interSans.variable} relative antialiased`}>
         <Wrappers>

@@ -6,7 +6,7 @@ import { LINKS } from '@/constants'
 
 import { metadataFactory } from '@/helpers'
 
-import { getDictionaryQueryOptions, getQueryClient, prisma } from '@/lib'
+import { QUERIES_TIMEOUT, getDictionaryQueryOptions, getQueryClient, prisma } from '@/lib'
 
 import { redirect } from '@/i18n'
 
@@ -33,7 +33,7 @@ export default async function Dictionary({ params }: { params: Promise<{ id: str
   }
   const queryClient = getQueryClient()
 
-  queryClient.prefetchQuery(getDictionaryQueryOptions(id))
+  queryClient.prefetchQuery({ ...getDictionaryQueryOptions(id), ...QUERIES_TIMEOUT })
 
   return (
     <div className='container adaptive-margin-top-20-60'>
