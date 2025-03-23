@@ -7,7 +7,7 @@ import { getUserOrRedirect } from '@/actions'
 
 import { metadataFactory } from '@/helpers'
 
-import { getDictionariesQueryOptions, getQueryClient } from '@/lib'
+import { QUERIES_TIMEOUT, getDictionariesQueryOptions, getQueryClient } from '@/lib'
 
 import { CreateDictionaryDialog } from './components/create-dictionary-dialog/create-dictionary-dialog'
 import { DictionaryList } from './components/dictionary-list/dictionary-list'
@@ -21,7 +21,10 @@ export default async function Dictionaries() {
 
   const queryClient = getQueryClient()
 
-  queryClient.prefetchQuery(getDictionariesQueryOptions(user.id))
+  queryClient.prefetchQuery({
+    ...getDictionariesQueryOptions(user.id),
+    ...QUERIES_TIMEOUT,
+  })
 
   return (
     <div className='container adaptive-margin-top-20-60'>
