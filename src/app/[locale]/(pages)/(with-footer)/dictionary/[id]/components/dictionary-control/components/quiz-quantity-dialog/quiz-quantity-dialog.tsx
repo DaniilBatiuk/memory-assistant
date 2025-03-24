@@ -10,7 +10,7 @@ import {
 
 import { LINKS, QUIZ_QUANTITY } from '@/constants'
 
-import { isOlderThan24Hours } from '@/helpers'
+import { isToday } from '@/helpers'
 
 import { cn } from '@/lib'
 
@@ -31,6 +31,8 @@ export const QuizQuantityDialog: React.FC<QuizQuantityDialogProps> = ({
 }: QuizQuantityDialogProps) => {
   const t = useTranslations('Dictionary')
 
+  console.log('dictionary', dictionary.words.slice(0, 4))
+
   return (
     <Dialog open={openQuantityDialog} onOpenChange={setOpenQuantityDialog}>
       <DialogContent className='max-w-[450px]'>
@@ -47,7 +49,7 @@ export const QuizQuantityDialog: React.FC<QuizQuantityDialogProps> = ({
             className={cn('relative rounded-md p-[10px] text-left hover:bg-foreground/5', {
               'pointer-events-none opacity-20': dictionary.words
                 .slice(0, 4)
-                .some(word => isOlderThan24Hours(word.createdAt)),
+                .some(word => !isToday(word.createdAt)),
             })}
           >
             {t('quizQuantity.addedToday')}

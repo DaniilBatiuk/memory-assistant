@@ -11,7 +11,7 @@ export const CreateAVocabulary: React.FC = () => {
   const { createAVocabulary } = useCreateAVocabulary()
 
   return (
-    <Button size='lg' onClick={createAVocabulary}>
+    <Button size='lg' onClick={createAVocabulary} className='hidden-animation-left delay-400'>
       {t('createAVocabulary')}
     </Button>
   )
