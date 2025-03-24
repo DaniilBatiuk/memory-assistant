@@ -18,6 +18,7 @@ import { Link } from '@/i18n'
 
 interface UserDropDownProps {
   user: {
+    id: string
     name: string
     imageUrl?: string
   }
@@ -36,7 +37,7 @@ export const UserDropDown: React.FC<UserDropDownProps> = ({ user }: UserDropDown
       </DropdownMenuTrigger>
       <DropdownMenuContent align='start' className='mr-[15px] w-32'>
         <DropdownMenuGroup>
-          <Link href={LINKS.Dictionaries}>
+          <Link href={LINKS.Dictionaries + '/' + user.id}>
             <DropdownMenuItem className='cursor-pointer'>{t('dictionaries')}</DropdownMenuItem>
           </Link>
           <DropdownMenuItem

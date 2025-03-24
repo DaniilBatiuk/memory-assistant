@@ -23,7 +23,7 @@ export const DictionariesLi: React.FC<DictionariesLiProps> = ({
   return (
     <li className='flex w-full'>
       <Link
-        href={LINKS.Dictionaries}
+        href={LINKS.Dictionaries + '/' + session.user.id}
         onClick={closeBurgerMenu}
         className='w-full py-3 text-center text-xl font-medium text-foreground/60 hover:cursor-pointer hover:bg-foreground/5 hover:text-foreground'
       >

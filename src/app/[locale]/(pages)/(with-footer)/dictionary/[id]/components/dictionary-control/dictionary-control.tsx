@@ -1,12 +1,13 @@
 'use client'
 
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui'
 
 import { getDictionaryQueryOptions } from '@/lib'
 
+import { ControlsLoading } from './components/controls-loading/controls-loading'
 import { QuizQuantityDialog } from './components/quiz-quantity-dialog/quiz-quantity-dialog'
 import { QuizTypeDialog } from './components/quiz-type-dialog/quiz-type-dialog'
 import { useQuizInit } from './hooks/use-quiz-init'
@@ -20,7 +21,8 @@ export const DictionaryControl: React.FC<DictionaryControlProps> = ({
 }: DictionaryControlProps) => {
   const t = useTranslations('Dictionary')
 
-  const { data: dictionary } = useSuspenseQuery(getDictionaryQueryOptions(dictionaryId))
+  const { data: dictionary, isPending } = useQuery(getDictionaryQueryOptions(dictionaryId))
+
   const {
     type,
     setType,
@@ -29,6 +31,8 @@ export const DictionaryControl: React.FC<DictionaryControlProps> = ({
     openQuantityDialog,
     setOpenQuantityDialog,
   } = useQuizInit()
+
+  if (isPending) return <ControlsLoading />
 
   return (
     <div className='flex items-center justify-between adaptive-margin-bottom-20-30'>
