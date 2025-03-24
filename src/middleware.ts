@@ -14,7 +14,9 @@ export default async function middleware(request: NextRequest) {
     pathname.includes('/dictionary') ||
     pathname.includes('/quiz')
   ) {
-    const sessionToken = request.cookies.get('next-auth.session-token')?.value
+    const sessionToken =
+      request.cookies.get('__Secure-next-auth.session-token')?.value ||
+      request.cookies.get('next-auth.session-token')?.value
 
     let user = null
 
