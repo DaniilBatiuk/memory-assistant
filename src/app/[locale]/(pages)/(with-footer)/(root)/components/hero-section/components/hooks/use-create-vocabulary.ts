@@ -10,7 +10,7 @@ export const useCreateAVocabulary = () => {
 
   const createAVocabulary = () => {
     if (session) {
-      router.push(LINKS.Dictionaries)
+      router.push(LINKS.Dictionaries + '/' + session.user.id)
     } else {
       signIn('google', {
         callbackUrl: LINKS.Home,
