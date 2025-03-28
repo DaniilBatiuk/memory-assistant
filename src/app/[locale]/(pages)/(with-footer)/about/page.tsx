@@ -11,6 +11,7 @@ export const metadata = metadataFactory('About')
 
 export default async function About() {
   const t = await getTranslations('AboutPage')
+
   return (
     <section className='container adaptive-margin-top-20-60'>
       <div>

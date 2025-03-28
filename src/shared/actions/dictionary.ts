@@ -7,7 +7,7 @@ import { prisma } from '../lib/db'
 import { getUserOrRedirect } from './user'
 
 export const createDictionary = async (dictionary: CreateDictionary): Promise<IDictionary> => {
-  const user = await getUserOrRedirect()
+  const { user } = await getUserOrRedirect()
 
   return await prisma.dictionary.create({
     data: {

@@ -52,6 +52,9 @@ export const authOptions: AuthOptions = {
         where: {
           email: token.email,
         },
+        include: {
+          dictionaries: { select: { id: true } },
+        },
       })
 
       if (findUser) {
@@ -59,6 +62,7 @@ export const authOptions: AuthOptions = {
         token.email = findUser.email
         token.name = findUser.name
         token.imageUrl = findUser.imageUrl ?? undefined
+        token.dictionaries = findUser.dictionaries
       }
 
       return token

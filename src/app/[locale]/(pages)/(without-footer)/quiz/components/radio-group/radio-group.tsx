@@ -16,6 +16,7 @@ export const RadioGroupBlock: React.FC<RadioGroupProps> = ({
   variants,
 }: RadioGroupProps) => {
   const [selectedValue, setSelectedValue] = useState<string | 'none'>('none')
+
   const handleResetSelection = () => {
     setSelectedValue('none')
     setStep(prev => prev + 1)

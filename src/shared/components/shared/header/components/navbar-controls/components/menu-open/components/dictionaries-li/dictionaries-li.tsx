@@ -18,12 +18,12 @@ export const DictionariesLi: React.FC<DictionariesLiProps> = ({
 
   const { data: session } = useSession()
 
-  if (!session) return <></>
+  if (!session) return null
 
   return (
     <li className='flex w-full'>
       <Link
-        href={LINKS.Dictionaries}
+        href={LINKS.Dictionaries + '/' + session.user.id}
         onClick={closeBurgerMenu}
         className='w-full py-3 text-center text-xl font-medium text-foreground/60 hover:cursor-pointer hover:bg-foreground/5 hover:text-foreground'
       >

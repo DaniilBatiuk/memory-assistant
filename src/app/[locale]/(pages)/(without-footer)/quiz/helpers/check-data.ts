@@ -1,10 +1,8 @@
-import { headers } from 'next/headers'
-
-import { getDictionary } from '@/actions'
+import { getDictionary, getUserOrRedirect } from '@/actions'
 
 import { LINKS, QUIZ_OPTIONS, QUIZ_QUANTITY } from '@/constants'
 
-import { getUserSession, isOlderThan24Hours } from '@/helpers'
+import { isToday } from '@/helpers'
 
 import { redirect } from '@/i18n'
 
@@ -27,11 +25,9 @@ export const checkData = async ({
   const decodedQuantity = quantity ? decodeURIComponent(quantity) : ''
 
   const dictionary = await getDictionary(dictionaryId ?? '')
-  const user = await getUserSession()
-  const locale = (await headers()).get('x-next-intl-locale') || 'en'
+  const { user, locale } = await getUserOrRedirect()
 
   if (
-    !user ||
     !dictionary ||
     user.id !== dictionary.userId ||
     !QUIZ_OPTIONS.includes(decodedType) ||
@@ -47,9 +43,7 @@ export const checkData = async ({
     case QUIZ_QUANTITY[0]:
       filteredDictionary = {
         ...dictionary,
-        words: (dictionary.words = dictionary.words.filter(
-          word => !isOlderThan24Hours(word.createdAt),
-        )),
+        words: (dictionary.words = dictionary.words.filter(word => isToday(word.createdAt))),
       }
       break
     case QUIZ_QUANTITY[1]:
