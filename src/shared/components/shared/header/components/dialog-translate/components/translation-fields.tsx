@@ -4,12 +4,22 @@ import { Textarea } from '@/components/ui'
 
 import { cn } from '@/lib'
 
-import { useTranslationDialog } from '../hooks/use-translation-dialog'
+interface TranslationFieldsProps {
+  search: string
+  setSearch: (value: string) => void
+  translation: any
+  isFetching: boolean
+  debouncedSearch: string
+}
 
-export const TranslationFields: React.FC = () => {
+export const TranslationFields: React.FC<TranslationFieldsProps> = ({
+  search,
+  setSearch,
+  translation,
+  isFetching,
+  debouncedSearch,
+}: TranslationFieldsProps) => {
   const t = useTranslations('TranslationDialog')
-
-  const { search, setSearch, translation, isFetching, debouncedSearch } = useTranslationDialog()
 
   return (
     <div className='flex gap-4 max-[700px]:flex-col'>

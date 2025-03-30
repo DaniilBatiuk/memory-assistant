@@ -13,6 +13,7 @@ import {
 
 import { Languages } from './components/languages'
 import { TranslationFields } from './components/translation-fields'
+import { useTranslationDialog } from './hooks/use-translation-dialog'
 
 interface DialogTranslateProps {
   children: React.ReactNode
@@ -23,6 +24,19 @@ export const DialogTranslate: React.FC<DialogTranslateProps> = ({
 }: DialogTranslateProps) => {
   const t = useTranslations('TranslationDialog')
 
+  const {
+    search,
+    setSearch,
+    translation,
+    isFetching,
+    debouncedSearch,
+    switchLanguages,
+    from,
+    to,
+    setFrom,
+    setTo,
+  } = useTranslationDialog()
+
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -32,8 +46,20 @@ export const DialogTranslate: React.FC<DialogTranslateProps> = ({
           <DialogDescription className='hidden'>{t('title')}</DialogDescription>
         </DialogHeader>
         <div>
-          <Languages />
-          <TranslationFields />
+          <Languages
+            switchLanguages={switchLanguages}
+            from={from}
+            to={to}
+            setFrom={setFrom}
+            setTo={setTo}
+          />
+          <TranslationFields
+            search={search}
+            setSearch={setSearch}
+            translation={translation}
+            isFetching={isFetching}
+            debouncedSearch={debouncedSearch}
+          />
         </div>
       </DialogContent>
     </Dialog>
