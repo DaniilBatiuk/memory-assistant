@@ -9,15 +9,15 @@ export const HeroSection: React.FC = async () => {
 
   return (
     <section className='flex items-center justify-between adaptive-gap-25-40 max-[930px]:flex-col'>
-      <div className='half-width max-[930px]:w-full'>
+      <div className='hidden-animation-left half-width max-[930px]:w-full'>
         <h1 className='font-bold leading-[1.2] adaptive-font-size-40-69'>{t('title')}</h1>
-        <p className='text-lg text-foreground/55 adaptive-font-size-16-18 adaptive-margin-bottom-20-25 adaptive-margin-top-10-15'>
+        <p className='hidden-animation-left text-lg text-foreground/55 delay-100 adaptive-font-size-16-18 adaptive-margin-bottom-20-25 adaptive-margin-top-10-15'>
           {t('subtitle')}
         </p>
         <CreateAVocabulary />
       </div>
       <Image
-        className='half-width rounded-2xl max-[930px]:w-full lg:rounded-3xl'
+        className='hidden-animation-right half-width rounded-2xl max-[930px]:w-full lg:rounded-3xl'
         placeholder='blur'
         src={HomeImage1}
         alt=''

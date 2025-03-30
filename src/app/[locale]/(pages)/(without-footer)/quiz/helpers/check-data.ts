@@ -2,7 +2,7 @@ import { getDictionary, getUserOrRedirect } from '@/actions'
 
 import { LINKS, QUIZ_OPTIONS, QUIZ_QUANTITY } from '@/constants'
 
-import { isOlderThan24Hours } from '@/helpers'
+import { isToday } from '@/helpers'
 
 import { redirect } from '@/i18n'
 
@@ -43,9 +43,7 @@ export const checkData = async ({
     case QUIZ_QUANTITY[0]:
       filteredDictionary = {
         ...dictionary,
-        words: (dictionary.words = dictionary.words.filter(
-          word => !isOlderThan24Hours(word.createdAt),
-        )),
+        words: (dictionary.words = dictionary.words.filter(word => isToday(word.createdAt))),
       }
       break
     case QUIZ_QUANTITY[1]:
